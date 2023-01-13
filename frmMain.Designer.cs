@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbxTables = new System.Windows.Forms.GroupBox();
             this.btnC4 = new System.Windows.Forms.Button();
             this.btnC3 = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.btnFillAll = new System.Windows.Forms.Button();
             this.btnCancelAll = new System.Windows.Forms.Button();
             this.lblSystemMessages = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.gbxTables.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +91,7 @@
             this.btnC4.Text = "C4";
             this.btnC4.UseVisualStyleBackColor = false;
             this.btnC4.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnC4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC3
             // 
@@ -100,6 +103,7 @@
             this.btnC3.Text = "C3";
             this.btnC3.UseVisualStyleBackColor = false;
             this.btnC3.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnC3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC2
             // 
@@ -111,6 +115,7 @@
             this.btnC2.Text = "C2";
             this.btnC2.UseVisualStyleBackColor = false;
             this.btnC2.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnC2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC1
             // 
@@ -122,6 +127,7 @@
             this.btnC1.Text = "C1";
             this.btnC1.UseVisualStyleBackColor = false;
             this.btnC1.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnC1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB4
             // 
@@ -133,6 +139,7 @@
             this.btnB4.Text = "B4";
             this.btnB4.UseVisualStyleBackColor = false;
             this.btnB4.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnB4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB3
             // 
@@ -144,6 +151,7 @@
             this.btnB3.Text = "B3";
             this.btnB3.UseVisualStyleBackColor = false;
             this.btnB3.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnB3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB2
             // 
@@ -155,6 +163,7 @@
             this.btnB2.Text = "B2";
             this.btnB2.UseVisualStyleBackColor = false;
             this.btnB2.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnB2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB1
             // 
@@ -166,6 +175,7 @@
             this.btnB1.Text = "B1";
             this.btnB1.UseVisualStyleBackColor = false;
             this.btnB1.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnB1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA4
             // 
@@ -177,6 +187,7 @@
             this.btnA4.Text = "A4";
             this.btnA4.UseVisualStyleBackColor = false;
             this.btnA4.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnA4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA3
             // 
@@ -188,6 +199,7 @@
             this.btnA3.Text = "A3";
             this.btnA3.UseVisualStyleBackColor = false;
             this.btnA3.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnA3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA2
             // 
@@ -199,6 +211,7 @@
             this.btnA2.Text = "A2";
             this.btnA2.UseVisualStyleBackColor = false;
             this.btnA2.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnA2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA1
             // 
@@ -210,6 +223,7 @@
             this.btnA1.Text = "A1";
             this.btnA1.UseVisualStyleBackColor = false;
             this.btnA1.Click += new System.EventHandler(this.ButtonClicked);
+            this.btnA1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // lblTopStatus
             // 
@@ -393,6 +407,7 @@
         private System.Windows.Forms.Button btnFillAll;
         private System.Windows.Forms.Button btnCancelAll;
         private System.Windows.Forms.Label lblSystemMessages;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

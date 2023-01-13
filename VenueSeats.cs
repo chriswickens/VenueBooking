@@ -37,16 +37,12 @@ namespace Assignment1
             
         }
 
-        public static void Testing(ref bool test)
-        {
-            test = true;
-        }
-
         /// <summary>
         /// Check for occupancy in the array
         /// </summary>
         public static void OccupancyCheck(VenueSeats[] venueArray)
         {
+            // Could make venue.Array.GetL 12 because the array is fixed
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
                 //
@@ -61,5 +57,6 @@ namespace Assignment1
 
             }
         }
+               
     }
 }
