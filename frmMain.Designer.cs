@@ -198,6 +198,7 @@
             this.btnA1.TabIndex = 0;
             this.btnA1.Text = "A1";
             this.btnA1.UseVisualStyleBackColor = false;
+            this.btnA1.Click += new System.EventHandler(this.btnA1_Click);
             // 
             // lblTopStatus
             // 

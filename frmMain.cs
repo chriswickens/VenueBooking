@@ -17,5 +17,10 @@ namespace Assignment1
             InitializeComponent();
         }
 
+        private void btnA1_Click(object sender, EventArgs e)
+        {
+            // VenueSeats.Test1();
+            // That is how you call the class to create objects
+        }
     }
 }
