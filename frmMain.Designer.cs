@@ -47,7 +47,7 @@
             this.lblRow = new System.Windows.Forms.Label();
             this.lblCol = new System.Windows.Forms.Label();
             this.lblCustName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBxCustName = new System.Windows.Forms.TextBox();
             this.btnBook = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddToWaitList = new System.Windows.Forms.Button();
@@ -88,6 +88,7 @@
             this.btnC4.TabIndex = 11;
             this.btnC4.Text = "C4";
             this.btnC4.UseVisualStyleBackColor = false;
+            this.btnC4.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnC3
             // 
@@ -98,6 +99,7 @@
             this.btnC3.TabIndex = 10;
             this.btnC3.Text = "C3";
             this.btnC3.UseVisualStyleBackColor = false;
+            this.btnC3.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnC2
             // 
@@ -108,6 +110,7 @@
             this.btnC2.TabIndex = 9;
             this.btnC2.Text = "C2";
             this.btnC2.UseVisualStyleBackColor = false;
+            this.btnC2.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnC1
             // 
@@ -118,6 +121,7 @@
             this.btnC1.TabIndex = 8;
             this.btnC1.Text = "C1";
             this.btnC1.UseVisualStyleBackColor = false;
+            this.btnC1.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnB4
             // 
@@ -128,6 +132,7 @@
             this.btnB4.TabIndex = 7;
             this.btnB4.Text = "B4";
             this.btnB4.UseVisualStyleBackColor = false;
+            this.btnB4.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnB3
             // 
@@ -138,6 +143,7 @@
             this.btnB3.TabIndex = 6;
             this.btnB3.Text = "B3";
             this.btnB3.UseVisualStyleBackColor = false;
+            this.btnB3.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnB2
             // 
@@ -148,6 +154,7 @@
             this.btnB2.TabIndex = 5;
             this.btnB2.Text = "B2";
             this.btnB2.UseVisualStyleBackColor = false;
+            this.btnB2.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnB1
             // 
@@ -158,6 +165,7 @@
             this.btnB1.TabIndex = 4;
             this.btnB1.Text = "B1";
             this.btnB1.UseVisualStyleBackColor = false;
+            this.btnB1.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnA4
             // 
@@ -168,6 +176,7 @@
             this.btnA4.TabIndex = 3;
             this.btnA4.Text = "A4";
             this.btnA4.UseVisualStyleBackColor = false;
+            this.btnA4.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnA3
             // 
@@ -178,6 +187,7 @@
             this.btnA3.TabIndex = 2;
             this.btnA3.Text = "A3";
             this.btnA3.UseVisualStyleBackColor = false;
+            this.btnA3.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnA2
             // 
@@ -188,6 +198,7 @@
             this.btnA2.TabIndex = 1;
             this.btnA2.Text = "A2";
             this.btnA2.UseVisualStyleBackColor = false;
+            this.btnA2.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // btnA1
             // 
@@ -198,7 +209,7 @@
             this.btnA1.TabIndex = 0;
             this.btnA1.Text = "A1";
             this.btnA1.UseVisualStyleBackColor = false;
-            this.btnA1.Click += new System.EventHandler(this.btnA1_Click);
+            this.btnA1.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // lblTopStatus
             // 
@@ -263,12 +274,12 @@
             this.lblCustName.TabIndex = 6;
             this.lblCustName.Text = "Customer Name:";
             // 
-            // textBox1
+            // txtBxCustName
             // 
-            this.textBox1.Location = new System.Drawing.Point(556, 267);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(291, 22);
-            this.textBox1.TabIndex = 7;
+            this.txtBxCustName.Location = new System.Drawing.Point(556, 267);
+            this.txtBxCustName.Name = "txtBxCustName";
+            this.txtBxCustName.Size = new System.Drawing.Size(291, 22);
+            this.txtBxCustName.TabIndex = 7;
             // 
             // btnBook
             // 
@@ -278,6 +289,7 @@
             this.btnBook.TabIndex = 8;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // btnCancel
             // 
@@ -329,14 +341,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(923, 496);
+            this.ClientSize = new System.Drawing.Size(923, 725);
             this.Controls.Add(this.lblSystemMessages);
             this.Controls.Add(this.btnCancelAll);
             this.Controls.Add(this.btnFillAll);
             this.Controls.Add(this.btnAddToWaitList);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnBook);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBxCustName);
             this.Controls.Add(this.lblCustName);
             this.Controls.Add(this.lblCol);
             this.Controls.Add(this.lblRow);
@@ -346,6 +358,7 @@
             this.Controls.Add(this.gbxTables);
             this.Name = "frmMain";
             this.Text = "Assignment 1";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbxTables.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -373,7 +386,7 @@
         private System.Windows.Forms.Label lblRow;
         private System.Windows.Forms.Label lblCol;
         private System.Windows.Forms.Label lblCustName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBxCustName;
         private System.Windows.Forms.Button btnBook;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAddToWaitList;
