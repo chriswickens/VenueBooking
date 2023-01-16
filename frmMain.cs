@@ -113,21 +113,59 @@ namespace Assignment1
         /// </summary>
         public void OccupancyWaitListCheck()
         {
+            // The waitlist message after moving people to a table
+            string waitListStatusMessage = "";
+
+            // Temp storage to concatenate the message
+            string tempStatusMessage = "";
+
+            // Store the waitlist count to ensure the message is concatenated properly
+            int storedWaitlistCount = 0;
+
             if (waitList.Count > 0)
             {
+                storedWaitlistCount = waitList.Count;
+
                 while (waitList.Count > 0)
                 {
                     VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
+                    
+                    
                     // Add the first item from the list to the booking
                     if (anyOccupancyCheck == true)
                     {
+                        tempStatusMessage = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName}";
                         VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
-                        lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {userTableSelection}";
+                        
+                        if (storedWaitlistCount > 1)
+                        {
+                            waitListStatusMessage += $"{tempStatusMessage}, ";
+                        }
+
+                        else
+                        {
+                            waitListStatusMessage = tempStatusMessage;
+                        }
+                        
+                        //lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName }";
+
 
                         // Remove the person from the waitList
                         waitList.RemoveAt(0);
+                        
                     }
+                    
                 }
+
+                if (anyOccupancyCheck == true)
+                {
+                    lblSystemMessages.Text = waitListStatusMessage;
+                }
+            }
+
+            else
+            {
+                lblSystemMessages.Text = "No people on waitlist";
             }
         }
 

@@ -406,7 +406,7 @@
             this.panel1.Controls.Add(this.lblSystemMessages);
             this.panel1.Location = new System.Drawing.Point(12, 377);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 42);
+            this.panel1.Size = new System.Drawing.Size(1126, 42);
             this.panel1.TabIndex = 21;
             // 
             // lblStaticStatusText
