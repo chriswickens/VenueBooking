@@ -18,7 +18,7 @@ namespace Assignment1
         public bool occupiedSeat;
 
         // Declare here?
-        VenueSeats[] arrayTest = new VenueSeats[1];
+        VenueSeats[] arrayTest = new VenueSeats[12];
 
         // Default constructor
         public VenueSeats()

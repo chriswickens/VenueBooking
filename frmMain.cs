@@ -13,7 +13,7 @@ namespace Assignment1
 {
     public partial class frmMain : Form
     {
-        
+
         // Here or in the class?
         VenueSeats[] venueArray = new VenueSeats[12]; // Table Array...The array for the tables...
 
@@ -104,6 +104,31 @@ namespace Assignment1
             venueArray[11] = new VenueSeats("C4", "", false);
 
             UpdateAllOccupancyDisplays();
+
+        }
+
+        public void OccupancyWaitListCheck()
+        {
+
+            while (waitList.Count > 0)
+            {
+                VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
+                // Add the first item from the list to the booking
+                if (anyOccupancyCheck == true)
+                {
+                    VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
+                    lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {userTableSelection}";
+
+                    // Remove the person from the waitList
+                    waitList.RemoveAt(0);
+                }
+
+                else
+                {
+                    MessageBox.Show("Occupancy new function error, else after new if");
+                }
+
+            }
 
         }
 
@@ -236,7 +261,7 @@ namespace Assignment1
                 UserSelectionRowColCheck();
 
                 // If their rowCol check was good, and there is at least one occupancy
-                
+
                 if (rowColCheck == true && anyOccupancyCheck == true)
                 {
 
@@ -257,16 +282,16 @@ namespace Assignment1
                             // Clear the entered name on a successful booking too
                             ClearRowColLists();
                             txtBxCustName.Text = "";
-                            break;                      
+                            break;
                         }
 
                         // If the tablename is correct, but it is occupied
                         else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
                         {
-                            lblSystemMessages.Text = "Seat is currently booked! Please pick another seat!";                            
+                            lblSystemMessages.Text = "Seat is currently booked! Please pick another seat!";
                             ClearRowColLists();
                         }
-                    }                    
+                    }
                 }
 
                 // If the row-col check was good, and there is NO occupancy available
@@ -346,6 +371,7 @@ namespace Assignment1
         private void btnCancelAll_Click(object sender, EventArgs e)
         {
             VenueSeats.CancelAllBookings(venueArray);
+            OccupancyWaitListCheck();
             UpdateAllOccupancyDisplays();
         }
 
@@ -380,9 +406,9 @@ namespace Assignment1
         {
             if (waitList.Count > 0)
             {
-                if (MessageBox.Show($"{waitList.Count} person(s) on the wait list! " + 
+                if (MessageBox.Show($"{waitList.Count} person(s) on the wait list! " +
                     $"\nAre you sure you want to clear the wait list?",
-                    "WARNING", 
+                    "WARNING",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     waitList.Clear();
@@ -395,7 +421,7 @@ namespace Assignment1
                     lblSystemMessages.Text = "Wait list NOT cleared";
                 }
             }
-            
+
             else
             {
                 lblSystemMessages.Text = "Wait list is empty";
@@ -408,7 +434,7 @@ namespace Assignment1
             // Reset to prevent old data from causing errors
             userTableSelection = "";
             userTableSelectionIndex = 0;
-            
+
             // if the user selected a proper row and col
             UserSelectionRowColCheck();
 
@@ -421,24 +447,20 @@ namespace Assignment1
 
                     if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
                     {
-                        
+
                         userTableSelectionIndex = i;
-                        if (MessageBox.Show($"Cancel booking at {userTableSelection} for {venueArray[userTableSelectionIndex].customerName}?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+
+                        if (MessageBox.Show($"Cancel booking at {userTableSelection} for {venueArray[userTableSelectionIndex].customerName}?",
+                            "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             lblSystemMessages.Text = $"Booking at {userTableSelection} canceled!";
                             VenueSeats.CancelBooking(venueArray, userTableSelectionIndex);
                             VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
 
                             // After canceling a booking, check to see if there is anyone on the waitList
-                            if (anyOccupancyCheck == true && waitList.Count > 0)
-                            {
-                                // Add the first item from the list to the booking
-                                VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
-                                lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {userTableSelection}";
 
-                                // Remove the person from the waitList
-                                waitList.RemoveAt(0);
-                            }
+                            OccupancyWaitListCheck();
+
 
                             UpdateAllOccupancyDisplays();
                             ClearRowColLists();
@@ -462,7 +484,7 @@ namespace Assignment1
             else
             {
                 lblSystemMessages.Text = "Please select a valid table to cancel";
-            }            
+            }
         }
     }
 }

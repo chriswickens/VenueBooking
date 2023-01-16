@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.gbxTables = new System.Windows.Forms.GroupBox();
             this.btnC4 = new System.Windows.Forms.Button();
             this.btnC3 = new System.Windows.Forms.Button();
@@ -45,8 +46,6 @@
             this.lblTopStatus = new System.Windows.Forms.Label();
             this.lstBxRows = new System.Windows.Forms.ListBox();
             this.lstBxCols = new System.Windows.Forms.ListBox();
-            this.lblRow = new System.Windows.Forms.Label();
-            this.lblCol = new System.Windows.Forms.Label();
             this.lblCustName = new System.Windows.Forms.Label();
             this.txtBxCustName = new System.Windows.Forms.TextBox();
             this.btnBook = new System.Windows.Forms.Button();
@@ -56,11 +55,15 @@
             this.btnCancelAll = new System.Windows.Forms.Button();
             this.lblSystemMessages = new System.Windows.Forms.Label();
             this.tltpDynamicDisplay = new System.Windows.Forms.ToolTip(this.components);
-            this.btnTestButton = new System.Windows.Forms.Button();
             this.lstBxWaitlistDisplay = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnClearWaitlist = new System.Windows.Forms.Button();
+            this.grpbxWaitlist = new System.Windows.Forms.GroupBox();
+            this.grbxRows = new System.Windows.Forms.GroupBox();
+            this.grbxColumns = new System.Windows.Forms.GroupBox();
             this.gbxTables.SuspendLayout();
+            this.grpbxWaitlist.SuspendLayout();
+            this.grbxRows.SuspendLayout();
+            this.grbxColumns.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxTables
@@ -78,9 +81,9 @@
             this.gbxTables.Controls.Add(this.btnA3);
             this.gbxTables.Controls.Add(this.btnA2);
             this.gbxTables.Controls.Add(this.btnA1);
-            this.gbxTables.Location = new System.Drawing.Point(12, 81);
+            this.gbxTables.Location = new System.Drawing.Point(12, 54);
             this.gbxTables.Name = "gbxTables";
-            this.gbxTables.Size = new System.Drawing.Size(447, 296);
+            this.gbxTables.Size = new System.Drawing.Size(447, 308);
             this.gbxTables.TabIndex = 0;
             this.gbxTables.TabStop = false;
             this.gbxTables.Text = "Venue";
@@ -232,7 +235,7 @@
             // lblTopStatus
             // 
             this.lblTopStatus.AutoSize = true;
-            this.lblTopStatus.Location = new System.Drawing.Point(41, 33);
+            this.lblTopStatus.Location = new System.Drawing.Point(15, 9);
             this.lblTopStatus.Name = "lblTopStatus";
             this.lblTopStatus.Size = new System.Drawing.Size(127, 16);
             this.lblTopStatus.TabIndex = 1;
@@ -246,7 +249,7 @@
             "A",
             "B",
             "C"});
-            this.lstBxRows.Location = new System.Drawing.Point(527, 119);
+            this.lstBxRows.Location = new System.Drawing.Point(6, 21);
             this.lstBxRows.Name = "lstBxRows";
             this.lstBxRows.Size = new System.Drawing.Size(120, 84);
             this.lstBxRows.TabIndex = 2;
@@ -260,33 +263,15 @@
             "2",
             "3",
             "4"});
-            this.lstBxCols.Location = new System.Drawing.Point(690, 119);
+            this.lstBxCols.Location = new System.Drawing.Point(6, 21);
             this.lstBxCols.Name = "lstBxCols";
             this.lstBxCols.Size = new System.Drawing.Size(120, 84);
             this.lstBxCols.TabIndex = 3;
             // 
-            // lblRow
-            // 
-            this.lblRow.AutoSize = true;
-            this.lblRow.Location = new System.Drawing.Point(524, 100);
-            this.lblRow.Name = "lblRow";
-            this.lblRow.Size = new System.Drawing.Size(34, 16);
-            this.lblRow.TabIndex = 4;
-            this.lblRow.Text = "Row";
-            // 
-            // lblCol
-            // 
-            this.lblCol.AutoSize = true;
-            this.lblCol.Location = new System.Drawing.Point(687, 100);
-            this.lblCol.Name = "lblCol";
-            this.lblCol.Size = new System.Drawing.Size(59, 16);
-            this.lblCol.TabIndex = 5;
-            this.lblCol.Text = "Columns";
-            // 
             // lblCustName
             // 
             this.lblCustName.AutoSize = true;
-            this.lblCustName.Location = new System.Drawing.Point(516, 238);
+            this.lblCustName.Location = new System.Drawing.Point(506, 178);
             this.lblCustName.Name = "lblCustName";
             this.lblCustName.Size = new System.Drawing.Size(107, 16);
             this.lblCustName.TabIndex = 6;
@@ -294,14 +279,14 @@
             // 
             // txtBxCustName
             // 
-            this.txtBxCustName.Location = new System.Drawing.Point(519, 267);
+            this.txtBxCustName.Location = new System.Drawing.Point(509, 207);
             this.txtBxCustName.Name = "txtBxCustName";
             this.txtBxCustName.Size = new System.Drawing.Size(291, 22);
             this.txtBxCustName.TabIndex = 7;
             // 
             // btnBook
             // 
-            this.btnBook.Location = new System.Drawing.Point(519, 309);
+            this.btnBook.Location = new System.Drawing.Point(509, 249);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(95, 42);
             this.btnBook.TabIndex = 8;
@@ -311,7 +296,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(617, 309);
+            this.btnCancel.Location = new System.Drawing.Point(607, 249);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 42);
             this.btnCancel.TabIndex = 9;
@@ -321,7 +306,7 @@
             // 
             // btnAddToWaitList
             // 
-            this.btnAddToWaitList.Location = new System.Drawing.Point(715, 309);
+            this.btnAddToWaitList.Location = new System.Drawing.Point(705, 249);
             this.btnAddToWaitList.Name = "btnAddToWaitList";
             this.btnAddToWaitList.Size = new System.Drawing.Size(95, 42);
             this.btnAddToWaitList.TabIndex = 10;
@@ -331,7 +316,7 @@
             // 
             // btnFillAll
             // 
-            this.btnFillAll.Location = new System.Drawing.Point(519, 357);
+            this.btnFillAll.Location = new System.Drawing.Point(509, 297);
             this.btnFillAll.Name = "btnFillAll";
             this.btnFillAll.Size = new System.Drawing.Size(140, 65);
             this.btnFillAll.TabIndex = 11;
@@ -341,7 +326,7 @@
             // 
             // btnCancelAll
             // 
-            this.btnCancelAll.Location = new System.Drawing.Point(670, 357);
+            this.btnCancelAll.Location = new System.Drawing.Point(660, 297);
             this.btnCancelAll.Name = "btnCancelAll";
             this.btnCancelAll.Size = new System.Drawing.Size(140, 65);
             this.btnCancelAll.TabIndex = 12;
@@ -352,21 +337,11 @@
             // lblSystemMessages
             // 
             this.lblSystemMessages.AutoSize = true;
-            this.lblSystemMessages.Location = new System.Drawing.Point(18, 468);
+            this.lblSystemMessages.Location = new System.Drawing.Point(12, 379);
             this.lblSystemMessages.Name = "lblSystemMessages";
             this.lblSystemMessages.Size = new System.Drawing.Size(104, 16);
             this.lblSystemMessages.TabIndex = 13;
             this.lblSystemMessages.Text = "Status Message";
-            // 
-            // btnTestButton
-            // 
-            this.btnTestButton.Location = new System.Drawing.Point(556, 458);
-            this.btnTestButton.Name = "btnTestButton";
-            this.btnTestButton.Size = new System.Drawing.Size(226, 107);
-            this.btnTestButton.TabIndex = 14;
-            this.btnTestButton.Text = "Test Button";
-            this.btnTestButton.UseVisualStyleBackColor = true;
-            this.btnTestButton.Click += new System.EventHandler(this.btnTestButton_Click);
             // 
             // lstBxWaitlistDisplay
             // 
@@ -374,23 +349,14 @@
             this.lstBxWaitlistDisplay.Enabled = false;
             this.lstBxWaitlistDisplay.FormattingEnabled = true;
             this.lstBxWaitlistDisplay.ItemHeight = 16;
-            this.lstBxWaitlistDisplay.Location = new System.Drawing.Point(858, 119);
+            this.lstBxWaitlistDisplay.Location = new System.Drawing.Point(40, 29);
             this.lstBxWaitlistDisplay.Name = "lstBxWaitlistDisplay";
             this.lstBxWaitlistDisplay.Size = new System.Drawing.Size(228, 228);
             this.lstBxWaitlistDisplay.TabIndex = 15;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(855, 100);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 16);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Currently in waitlist";
-            // 
             // btnClearWaitlist
             // 
-            this.btnClearWaitlist.Location = new System.Drawing.Point(897, 364);
+            this.btnClearWaitlist.Location = new System.Drawing.Point(79, 276);
             this.btnClearWaitlist.Name = "btnClearWaitlist";
             this.btnClearWaitlist.Size = new System.Drawing.Size(151, 50);
             this.btnClearWaitlist.TabIndex = 17;
@@ -398,16 +364,46 @@
             this.btnClearWaitlist.UseVisualStyleBackColor = true;
             this.btnClearWaitlist.Click += new System.EventHandler(this.btnClearWaitlist_Click);
             // 
+            // grpbxWaitlist
+            // 
+            this.grpbxWaitlist.Controls.Add(this.lstBxWaitlistDisplay);
+            this.grpbxWaitlist.Controls.Add(this.btnClearWaitlist);
+            this.grpbxWaitlist.Location = new System.Drawing.Point(834, 25);
+            this.grpbxWaitlist.Name = "grpbxWaitlist";
+            this.grpbxWaitlist.Size = new System.Drawing.Size(304, 337);
+            this.grpbxWaitlist.TabIndex = 18;
+            this.grpbxWaitlist.TabStop = false;
+            this.grpbxWaitlist.Text = "Waitlist";
+            // 
+            // grbxRows
+            // 
+            this.grbxRows.Controls.Add(this.lstBxRows);
+            this.grbxRows.Location = new System.Drawing.Point(509, 54);
+            this.grbxRows.Name = "grbxRows";
+            this.grbxRows.Size = new System.Drawing.Size(134, 116);
+            this.grbxRows.TabIndex = 19;
+            this.grbxRows.TabStop = false;
+            this.grbxRows.Text = "Row";
+            // 
+            // grbxColumns
+            // 
+            this.grbxColumns.Controls.Add(this.lstBxCols);
+            this.grbxColumns.Location = new System.Drawing.Point(666, 54);
+            this.grbxColumns.Name = "grbxColumns";
+            this.grbxColumns.Size = new System.Drawing.Size(134, 116);
+            this.grbxColumns.TabIndex = 20;
+            this.grbxColumns.TabStop = false;
+            this.grbxColumns.Text = "Column";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1101, 579);
-            this.Controls.Add(this.btnClearWaitlist);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lstBxWaitlistDisplay);
-            this.Controls.Add(this.btnTestButton);
+            this.ClientSize = new System.Drawing.Size(1177, 413);
+            this.Controls.Add(this.grbxColumns);
+            this.Controls.Add(this.grbxRows);
+            this.Controls.Add(this.grpbxWaitlist);
             this.Controls.Add(this.lblSystemMessages);
             this.Controls.Add(this.btnCancelAll);
             this.Controls.Add(this.btnFillAll);
@@ -416,16 +412,16 @@
             this.Controls.Add(this.btnBook);
             this.Controls.Add(this.txtBxCustName);
             this.Controls.Add(this.lblCustName);
-            this.Controls.Add(this.lblCol);
-            this.Controls.Add(this.lblRow);
-            this.Controls.Add(this.lstBxCols);
-            this.Controls.Add(this.lstBxRows);
             this.Controls.Add(this.lblTopStatus);
             this.Controls.Add(this.gbxTables);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Assignment 1";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbxTables.ResumeLayout(false);
+            this.grpbxWaitlist.ResumeLayout(false);
+            this.grbxRows.ResumeLayout(false);
+            this.grbxColumns.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,8 +445,6 @@
         private System.Windows.Forms.Label lblTopStatus;
         private System.Windows.Forms.ListBox lstBxRows;
         private System.Windows.Forms.ListBox lstBxCols;
-        private System.Windows.Forms.Label lblRow;
-        private System.Windows.Forms.Label lblCol;
         private System.Windows.Forms.Label lblCustName;
         private System.Windows.Forms.TextBox txtBxCustName;
         private System.Windows.Forms.Button btnBook;
@@ -460,10 +454,11 @@
         private System.Windows.Forms.Button btnCancelAll;
         private System.Windows.Forms.Label lblSystemMessages;
         private System.Windows.Forms.ToolTip tltpDynamicDisplay;
-        private System.Windows.Forms.Button btnTestButton;
         private System.Windows.Forms.ListBox lstBxWaitlistDisplay;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClearWaitlist;
+        private System.Windows.Forms.GroupBox grpbxWaitlist;
+        private System.Windows.Forms.GroupBox grbxRows;
+        private System.Windows.Forms.GroupBox grbxColumns;
     }
 }
 
