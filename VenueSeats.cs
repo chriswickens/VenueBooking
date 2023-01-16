@@ -31,8 +31,7 @@ namespace Assignment1
                 Test = value; 
             }
 
-        }
-            
+        }           
 
         // Declare here?
         VenueSeats[] arrayTest = new VenueSeats[12];
@@ -159,7 +158,7 @@ namespace Assignment1
             // Sent to a string to use .Length
             string senderString = sender.ToString();
             tableSelection = senderString.Substring(senderString.Length - 2);
-            MessageBox.Show(tableSelection);
+            //MessageBox.Show(tableSelection);
         }
 
         /// <summary>

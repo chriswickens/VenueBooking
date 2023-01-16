@@ -107,36 +107,35 @@ namespace Assignment1
 
         }
 
+        /// <summary>
+        /// Checks for occupancy and transfers the first item in the waitlist to the empty seat
+        /// Until there are no entries left in the waitList
+        /// </summary>
         public void OccupancyWaitListCheck()
         {
-
-            while (waitList.Count > 0)
+            if (waitList.Count > 0)
             {
-                VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
-                // Add the first item from the list to the booking
-                if (anyOccupancyCheck == true)
+                while (waitList.Count > 0)
                 {
-                    VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
-                    lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {userTableSelection}";
+                    VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
+                    // Add the first item from the list to the booking
+                    if (anyOccupancyCheck == true)
+                    {
+                        VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
+                        lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {userTableSelection}";
 
-                    // Remove the person from the waitList
-                    waitList.RemoveAt(0);
+                        // Remove the person from the waitList
+                        waitList.RemoveAt(0);
+                    }
                 }
-
-                else
-                {
-                    MessageBox.Show("Occupancy new function error, else after new if");
-                }
-
             }
-
         }
 
         private void UpdateAllOccupancyDisplays()
         {
             VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, waitList, ref occupancyStatus);
-            // This will update the current wait list occupancy
 
+            // This will update the current wait list occupancy
             lstBxWaitlistDisplay.Items.Clear();
 
             for (int i = 0; i < waitList.Count; i++)
@@ -162,6 +161,22 @@ namespace Assignment1
             VenueSeats.TableClickedStatus(ref userTableSelection, ref sender);
             // If a status message is meant to be displayed, remove the messagebox from the 
             // above method, and change the lbl status here
+
+            for (int i = 0; i < venueArray.GetLength(0); i++)
+            {
+                if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
+                {
+                    lblSystemMessages.Text = $"{userTableSelection}, {venueArray[i].customerName}";
+                    break;
+                }
+
+                else
+                {
+                    lblSystemMessages.Text = $"{userTableSelection}, vacant";
+                }
+            }
+
+            
 
         }
 
@@ -386,6 +401,7 @@ namespace Assignment1
             {
                 lblSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
                 VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
+                txtBxCustName.Text = "";
                 UpdateAllOccupancyDisplays();
             }
 

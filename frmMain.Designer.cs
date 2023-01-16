@@ -60,10 +60,13 @@
             this.grpbxWaitlist = new System.Windows.Forms.GroupBox();
             this.grbxRows = new System.Windows.Forms.GroupBox();
             this.grbxColumns = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblStaticStatusText = new System.Windows.Forms.Label();
             this.gbxTables.SuspendLayout();
             this.grpbxWaitlist.SuspendLayout();
             this.grbxRows.SuspendLayout();
             this.grbxColumns.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxTables
@@ -337,7 +340,8 @@
             // lblSystemMessages
             // 
             this.lblSystemMessages.AutoSize = true;
-            this.lblSystemMessages.Location = new System.Drawing.Point(12, 379);
+            this.lblSystemMessages.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSystemMessages.Location = new System.Drawing.Point(56, 9);
             this.lblSystemMessages.Name = "lblSystemMessages";
             this.lblSystemMessages.Size = new System.Drawing.Size(104, 16);
             this.lblSystemMessages.TabIndex = 13;
@@ -395,16 +399,36 @@
             this.grbxColumns.TabStop = false;
             this.grbxColumns.Text = "Column";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblStaticStatusText);
+            this.panel1.Controls.Add(this.lblSystemMessages);
+            this.panel1.Location = new System.Drawing.Point(12, 377);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(447, 42);
+            this.panel1.TabIndex = 21;
+            // 
+            // lblStaticStatusText
+            // 
+            this.lblStaticStatusText.AutoSize = true;
+            this.lblStaticStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaticStatusText.Location = new System.Drawing.Point(3, 9);
+            this.lblStaticStatusText.Name = "lblStaticStatusText";
+            this.lblStaticStatusText.Size = new System.Drawing.Size(47, 16);
+            this.lblStaticStatusText.TabIndex = 22;
+            this.lblStaticStatusText.Text = "Status:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1177, 413);
+            this.ClientSize = new System.Drawing.Size(1155, 435);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.grbxColumns);
             this.Controls.Add(this.grbxRows);
             this.Controls.Add(this.grpbxWaitlist);
-            this.Controls.Add(this.lblSystemMessages);
             this.Controls.Add(this.btnCancelAll);
             this.Controls.Add(this.btnFillAll);
             this.Controls.Add(this.btnAddToWaitList);
@@ -414,6 +438,7 @@
             this.Controls.Add(this.lblCustName);
             this.Controls.Add(this.lblTopStatus);
             this.Controls.Add(this.gbxTables);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Assignment 1";
@@ -422,6 +447,8 @@
             this.grpbxWaitlist.ResumeLayout(false);
             this.grbxRows.ResumeLayout(false);
             this.grbxColumns.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,6 +486,8 @@
         private System.Windows.Forms.GroupBox grpbxWaitlist;
         private System.Windows.Forms.GroupBox grbxRows;
         private System.Windows.Forms.GroupBox grbxColumns;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblStaticStatusText;
     }
 }
 
