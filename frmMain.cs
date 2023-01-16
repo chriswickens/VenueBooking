@@ -241,7 +241,12 @@ namespace Assignment1
             }
         }
 
-
+        /// <summary>
+        /// When the user clicks the booking button
+        /// Check for a valid name, row and col selection, and ensure there are empty tables
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBook_Click(object sender, EventArgs e)
         {
 
@@ -315,7 +320,6 @@ namespace Assignment1
         /// Adjusts the tooltip accordingly
         /// </summary>
         /// 
-
         private void ButtonMouseHover(object sender, EventArgs e)
         {
             // You can pass the ToolTip toolTip1 into a method/function apparently?
@@ -333,9 +337,7 @@ namespace Assignment1
                 // if the current array object has a true 
                 if (venueArray[i].occupiedSeat == true)
                 {
-
                     tltpDynamicDisplay.SetToolTip(buttonList.ElementAt(i), $"OCCUPIED BY: {venueArray[i].customerName}");
-
                 }
 
                 // if the current array object has a false
@@ -346,28 +348,11 @@ namespace Assignment1
             }
         }
 
-
         /// <summary>
-        /// 
-        /// 
-        /// 
-        /// 
-        /// Test Button for testing
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
+        /// Cancel ALL bookings
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnTestButton_Click(object sender, EventArgs e)
-        {
-            UpdateAllOccupancyDisplays();
-        }
-
         private void btnCancelAll_Click(object sender, EventArgs e)
         {
             VenueSeats.CancelAllBookings(venueArray);
@@ -375,12 +360,22 @@ namespace Assignment1
             UpdateAllOccupancyDisplays();
         }
 
+        /// <summary>
+        /// Fill any EMPTY seats
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFillAll_Click(object sender, EventArgs e)
         {
             VenueSeats.FillAllBookings(venueArray);
             UpdateAllOccupancyDisplays();
         }
 
+        /// <summary>
+        /// Add the current customer name to the waitlist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddToWaitList_Click(object sender, EventArgs e)
         {
             // Check occupancy
@@ -458,9 +453,7 @@ namespace Assignment1
                             VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
 
                             // After canceling a booking, check to see if there is anyone on the waitList
-
                             OccupancyWaitListCheck();
-
 
                             UpdateAllOccupancyDisplays();
                             ClearRowColLists();
