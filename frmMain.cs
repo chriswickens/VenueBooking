@@ -154,6 +154,11 @@ namespace Assignment1
                         waitList.RemoveAt(0);
                         
                     }
+
+                    else
+                    {
+                        break;
+                    }
                     
                 }
 
