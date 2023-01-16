@@ -38,25 +38,24 @@ namespace Assignment1
             this.tableName = tableName;
             this.customerName = customerName;
             this.occupiedSeat = occupiedSeat;
-
         }
 
         /// <summary>
-        /// Check for occupancy in the array
+        /// Get first index of vacant position in venueArray
         /// </summary>
         public static void GetOccupancyLocation(
             VenueSeats[] venueArray,
             ref bool anyOccupancyCheck,
             ref int occupancyLocation)
         {
+            // Resetting to avoid old data
             anyOccupancyCheck = false;
             occupancyLocation = 0;
-            // Could make venue.Array.GetL 12 because the array is fixed
+
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
                 if (venueArray[i].occupiedSeat == false)
                 {
-                    //MessageBox.Show($"Found empty seat at: venuArray{i}");
                     anyOccupancyCheck = true;
                     occupancyLocation = i;
 
@@ -72,96 +71,14 @@ namespace Assignment1
             }
         }
 
-        public static void TableClickedStatus(ref string tableSelection, ref object sender)
-        {
-            tableSelection = "";
-
-            // Sent to a string to use .Length
-            string senderString = sender.ToString();
-            tableSelection = senderString.Substring(senderString.Length - 2);
-            MessageBox.Show(tableSelection);
-        }
-
-        public static void AddBooking(
-            VenueSeats[] venueArray,
-            List<string> waitList,
-            int userTableSelectionIndex,
-            string customerName)
-        {
-
-            venueArray[userTableSelectionIndex].occupiedSeat = true;
-            venueArray[userTableSelectionIndex].customerName = customerName;
-
-
-
-        }
-
         /// <summary>
-        /// Add customer to waiting list
+        /// Updates all occupancy information
+        /// Top status, Seat buttons etc.
         /// </summary>
-        /// <param customerName="waitList"></param>
-        /// <param customerName="customerName"></param>
-        public static void AddToWaitlist(
-            List<string> waitList,
-            string customerName)
-        {
-
-            waitList.Add(customerName);
-        }
-
-        // Does this need to be part of the class?
-        // If not, you need to add variables to the main form
-        // for the occupiedtables, and occupationPercent
-        public static void GetOccypancyInformation(
-            VenueSeats[] venuArray,
-            ref string occupancyStatus)
-        {
-            // Kept as int and casted to double later, just in case 
-            // a decimal gets in there somehow
-            int occupiedTables = 0;
-
-            for (int i = 0; i < venuArray.GetLength(0); i++)
-            {
-                if (venuArray[i].occupiedSeat == true)
-                {
-                    // Adds one to occupiedTables each time a table has a true occupiedSeat field
-                    occupiedTables++;
-                }
-            }
-
-            // Should probably create an UpdateStatus method instead?
-            // Ask about this
-
-            //MessageBox.Show($"Total occupied: {occupiedTables}");
-
-            double occupationPercent = ((double)occupiedTables) / 12 * 100;
-            //MessageBox.Show($"{occupiedTables}/12 - Occupation: {occupationPercent}%");
-            occupancyStatus = $"{occupiedTables}/12 - Occupation: {Math.Round(occupationPercent, 0)}%";
-
-        }
-
-        public static void CancelAllBookings(VenueSeats[] venueArray)
-        {
-            for (int i = 0; i < venueArray.GetLength(0); i++)
-            {
-                venueArray[i].customerName = "";
-                venueArray[i].occupiedSeat = false;
-            }
-        }
-
-        // Should this only fill EMPTY seats, or everything no matter what?
-        public static void FillAllBookings(VenueSeats[] venueArray)
-        {
-            for (int i = 0; i < venueArray.GetLength(0); i++)
-            {
-                if (venueArray[i].occupiedSeat == false)
-                {
-                    venueArray[i].customerName = "AUTO-FILLED";
-                    venueArray[i].occupiedSeat = true;
-                }
-            }
-        }
-
+        /// <param name="venueArray"></param>
+        /// <param name="buttonList"></param>
+        /// <param name="waitList"></param>
+        /// <param name="occupancyStatus"></param>
         public static void OccupancyDisplaysUpdater(
             VenueSeats[] venueArray,
             List<Button> buttonList,
@@ -193,15 +110,9 @@ namespace Assignment1
                 }
             }
 
-
-            // Should probably create an UpdateStatus method instead?
-            // Ask about this
-
-            //MessageBox.Show($"Total occupied: {occupiedTables}");
             if (occupiedTables == 12)
             {
                 occupationPercent = ((double)occupiedTables) / 12 * 100;
-                //MessageBox.Show($"{occupiedTables}/12 - Occupation: {occupationPercent}%");
                 occupancyStatus = $"Total Capacity: {occupiedTables}/12 NO CAPACITY!  - " +
                     $"({Math.Round(occupationPercent, 1)})% Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
@@ -213,16 +124,49 @@ namespace Assignment1
             else
             {
                 occupationPercent = ((double)occupiedTables) / 12 * 100;
-                //MessageBox.Show($"{occupiedTables}/12 - Occupation: {occupationPercent}%");
                 occupancyStatus = $"Total Capacity: {occupiedTables}/12  - " +
                     $"({Math.Round(occupationPercent, 1)})% Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
             }
-            
-
-
-
         }
+
+        /// <summary>
+        /// Display information about the table being clicked on
+        /// </summary>
+        /// <param name="tableSelection"></param>
+        /// <param name="sender"></param>
+        public static void TableClickedStatus(ref string tableSelection, ref object sender)
+        {
+            tableSelection = "";
+
+            // Sent to a string to use .Length
+            string senderString = sender.ToString();
+            tableSelection = senderString.Substring(senderString.Length - 2);
+            MessageBox.Show(tableSelection);
+        }
+
+        /// <summary>
+        /// Add a booking
+        /// </summary>
+        /// <param name="venueArray"></param>
+        /// <param name="waitList"></param>
+        /// <param name="userTableSelectionIndex"></param>
+        /// <param name="customerName"></param>
+        public static void AddBooking(
+            VenueSeats[] venueArray,
+            List<string> waitList,
+            int userTableSelectionIndex,
+            string customerName)
+        {
+            venueArray[userTableSelectionIndex].occupiedSeat = true;
+            venueArray[userTableSelectionIndex].customerName = customerName;
+        }
+
+        /// <summary>
+        /// Cancel a booking
+        /// </summary>
+        /// <param name="venueArray"></param>
+        /// <param name="userTableSelectionIndex"></param>
         public static void CancelBooking(
             VenueSeats[] venueArray,
             int userTableSelectionIndex)
@@ -231,5 +175,45 @@ namespace Assignment1
             venueArray[userTableSelectionIndex].customerName = "";
         }
 
+        /// <summary>
+        /// Add customer to waiting list
+        /// </summary>
+        /// <param customerName="waitList"></param>
+        /// <param customerName="customerName"></param>
+        public static void AddToWaitlist(
+            List<string> waitList,
+            string customerName)
+        {
+            waitList.Add(customerName);
+        }
+
+        /// <summary>
+        /// Fill all bookings, does not overwrite existing bookings
+        /// </summary>
+        /// <param name="venueArray"></param>
+        public static void FillAllBookings(VenueSeats[] venueArray)
+        {
+            for (int i = 0; i < venueArray.GetLength(0); i++)
+            {
+                if (venueArray[i].occupiedSeat == false)
+                {
+                    venueArray[i].customerName = "OCCUPIED";
+                    venueArray[i].occupiedSeat = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Cancel all bookings
+        /// </summary>
+        /// <param name="venueArray"></param>
+        public static void CancelAllBookings(VenueSeats[] venueArray)
+        {
+            for (int i = 0; i < venueArray.GetLength(0); i++)
+            {
+                venueArray[i].customerName = "";
+                venueArray[i].occupiedSeat = false;
+            }
+        }
     }
 }

@@ -103,23 +103,8 @@ namespace Assignment1
             venueArray[10] = new VenueSeats("C3", "", false);
             venueArray[11] = new VenueSeats("C4", "", false);
 
-
-            // Get occupancy report on load
-            //CheckTables(); // Program function
-
-            // Trying the above from class
-            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, ref occupancyStatus);
             UpdateAllOccupancyDisplays();
-            // Update the occupancy status at top of window
-            //VenueSeats.GetOccypancyInformation(venueArray, ref occupancyStatus);
-            //lblTopStatus.Text = occupancyStatus;
 
-            // Shows all tableNames
-            //for (int i = 0; i < venueArray.Length; i++)
-            //{
-            //    //lblSystemMessages.Text = venueArray[i].tableName;
-            //    MessageBox.Show($"Array: {i}, value: {venueArray[i].tableName}");
-            //}
         }
 
         private void UpdateAllOccupancyDisplays()
@@ -141,93 +126,19 @@ namespace Assignment1
 
         }
 
-        // Replaced with a class method
-        //private void CheckTables()
-        //{
-        //    for (int i = 0; i < 12; i++)
-        //    {
-        //        // if the current array object has a true 
-        //        if (venueArray[i].occupiedSeat == true)
-        //        {
-        //            buttonList.ElementAt(i).BackColor = Color.Red;
-        //        }
-
-        //        // if the current array object has a false
-        //        else
-        //        {
-        //            buttonList.ElementAt(i).BackColor = Color.FromArgb(0, 192, 0);
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Assigns the table number to a variable for use
         /// based on what button the user clicked
-        /// 
         /// </summary>
         /// <param name="buttonText"></param>
-        //private void SelectTable(string buttonText)
-        //{
-        //    // Clear userTableSelection so there's no funny business
-        //    userTableSelection = "";
-
-        //    // Removes everything except the last two characters (A1 for example)
-        //    userTableSelection = buttonText.ToString().Substring(buttonText.Length - 2);
-        //    lblTopStatus.Text = userTableSelection;
-
-        //}
-
         private void TableDisplayButtonClicked(object sender, EventArgs e)
         {
             // This will be where the message goes if the user clicks a table button
             VenueSeats.TableClickedStatus(ref userTableSelection, ref sender);
             // If a status message is meant to be displayed, remove the messagebox from the 
             // above method, and change the lbl status here
-            /*
-            //SelectTable(sender.ToString());
-            //// Removes everything except the last two characters (A1 for example)
-            //userTableSelection = sender.ToString().Substring(sender.ToString().Length - 2);
-            //lblTopStatus.Text = userTableSelection;
-
-            //// Shows the number value of the table by using substring to only leave the last character
-            //// the last character will always be numeric, by subtracting 1 from that, you get the array
-            //// location of that table
-            //lblSystemMessages.Text = sender.ToString().Substring(sender.ToString().Length - 1);
-
-            //string getTableNumber = sender.ToString().Substring(sender.ToString().Length - 1);
-
-            //// This gets the array location by using -1
-            //int tableArrayLocation = int.Parse(getTableNumber) - 1;
-
-            ////This box just shows the output with the -1 to ensure proper array index number
-            //MessageBox.Show(tableArrayLocation.ToString());
-
-            //// Check for an empty table
-            ////VenueSeats.GetOccupancyLocation(venueArray);
-            ///
-            /// 
-            */
 
         }
-
-        /*
-        // YOU CHANGED FROM THIS TO THE ABOVE BUTTON CLICKED
-        // using the object, eventargs it will populate in the event list for any button
-        //private void btnA1_Click(object sender, EventArgs e)
-        //{
-
-        //    // VenueSeats.Test1();
-        //    // That is how you call the class to create objects
-
-        //    // Assigns the systemmessage label the name from venuearray[0] cust name
-        //    lblSystemMessages.Text = venueArray[0].customerName;
-        //    //lblTopStatus.Text = sender.ToString();
-        //    //userTableSelection = "a1";
-        //    lblTopStatus.Text = sender.ToString();
-        //    SelectTable(sender.ToString());
-
-        //}
-        */
 
         /// <summary>
         /// Clears the Row/Column selections
@@ -270,12 +181,11 @@ namespace Assignment1
                             throw new NullReferenceException();
                         }
 
-                        // Display information
-                        // This is where you would use the row/col values
-                        // To book a table and stuff
+                        // Valid Row/Col selection
+                        // Assign selection to userTableSelection for future use
                         rowColCheck = true;
                         userTableSelection = rowValue + colValue;
-                        //lblSystemMessages.Text = $"Row: {rowValue} - COL: {colValue}";
+
                     }
 
                     catch (NullReferenceException)
@@ -329,10 +239,6 @@ namespace Assignment1
                 
                 if (rowColCheck == true && anyOccupancyCheck == true)
                 {
-                    
-                    // concatenate the row and col values the user selected
-                    // put this in the userselectionrowcol check instead userTableSelection = rowValue + colValue;
-                    //lblSystemMessages.Text = userTableSelection;
 
                     // Iterate over how many tables there are
                     for (int i = 0; i < venueArray.GetLength(0); i++)
@@ -343,9 +249,7 @@ namespace Assignment1
 
                             // Book the table for the person at the selected location
                             userTableSelectionIndex = i;
-                            //lblSystemMessages.Text = $"Array Location: venuArray{i} - Table Selection: {userTableSelection}";
                             VenueSeats.AddBooking(venueArray, waitList, userTableSelectionIndex, txtBxCustName.Text);
-                            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, ref occupancyStatus);
                             UpdateAllOccupancyDisplays();
 
                             lblSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userTableSelection}";
@@ -377,200 +281,13 @@ namespace Assignment1
                     ClearRowColLists();
                     txtBxCustName.Text = "";
                 }
-
-                /*
-                //else
-                //{
-                //    lblSystemMessages.Text = "ERROR AT BOOKING LAST ELSE";
-                //}
-
-
-
-                //if (anyOccupancyCheck == true)
-                //{
-                //    lblSystemMessages.Text = $"Found vacant seat! Array location: {occupancyIndexLocation}";
-
-
-                //    ClearRowColLists();
-                //}
-
-                //else if (anyOccupancyCheck == false)
-                //{
-                //    lblSystemMessages.Text = "No vacant seat!";
-
-
-                //    // Add to waitlist with that function
-
-                //    VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
-
-                //    lblSystemMessages.Text = $"{txtBxCustName.Text} Added to waitlist!";
-                //}
-
-                //else
-                //{
-                //    lblSystemMessages.Text = "Vacant table check error!";
-                //}
-
-                //if (rowValue == "" || rowValue == " ")
-                //{
-                //    lblSystemMessages.Text = "Invalid ROW selection";
-                //    validUserRow = false;
-                //}
-
-                //if (colValue == "" || colValue == " ")
-                //{
-                //    lblSystemMessages.Text = "Invalid COLUMN selection";
-                //    validUserCol = false;
-                //}
-                */
             }
-
-
-
-
-            /*
-             * 
-             * 
-             * Things get all fuckey here!
-             * 
-             * 
-             * 
-             */
-            /*
-            //if (rowValue == "" || colValue == "")
-            //{
-            //    lblSystemMessages.Text = "Invalid row/column selection!";
-            //}
-
-            //else
-            //{
-
-            //    string rowColConcat = rowValue + colValue;
-            //    lblTopStatus.Text = rowColConcat;
-
-
-
-            //    // Can I do checks here or in the class?
-            //    if (txtBxCustName.Text == "" || txtBxCustName.Text == " ")
-            //    {
-            //        lblSystemMessages.Text = "Invalid name";
-            //    }
-
-            //    else
-            //    {
-            //        lblSystemMessages.Text = txtBxCustName.Text; // Just for debug
-            //        string customerName = txtBxCustName.Text;
-
-            //        for (int i = 0; i < venueArray.GetLength(0); i++)
-            //        {
-            //            if (venueArray[i].occupiedSeat == false)
-            //            {
-            //                occupiedTablesCount++; // Put this somewhere else so you can try a break here
-            //                anyOccupancyCheck = true;
-
-            //            }
-            //        }
-
-
-
-            //        /*
-            //         * 
-            //         * 
-            //         * This replaces the code below it that lets somone add at an existing location
-            //         * 
-            //         * 
-            //         * 
-            //         * 
-            //         */
-            /*
-            //        for (int i = 0; i < venueArray.GetLength(0); i++)
-            //        {
-            //            if (anyOccupancyCheck == true && venueArray[i].tableName != rowColConcat && venueArray[i].occupiedSeat == false)
-            //            {
-            //                userTableSelectionIndex = i;
-            //                VenueSeats.AddBooking(venueArray, userTableSelectionIndex, customerName);
-            //                VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList);
-            //                lstBxRows.ClearSelected();
-            //                lstBxCols.ClearSelected();
-            //                rowValue = "";
-            //                colValue = "";
-            //            }
-
-            //            else
-            //            {
-            //                continue;
-            //            }
-            //        }
-
-
-            /*
-             * 
-             * 
-             * 
-             * 
-             * FIX THIS, the blow code lets somone add a NEW booking ontop of an existing one
-             * 
-             * 
-             * 
-             */
-            /*
-            //if (anyOccupancyCheck == true)
-            //{
-            //    // Checking the array table names for what was selected
-            //    for (int i = 0; i < venueArray.GetLength(0); i++)
-            //    {
-            //        if (venueArray[i].tableName == rowColConcat)
-            //        {
-            //            //MessageBox.Show("Found the row/col matched");
-            //            userTableSelectionIndex = i;
-            //            VenueSeats.AddBooking(venueArray, userTableSelectionIndex, customerName);
-            //            VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList);
-            //            lstBxRows.ClearSelected();
-            //            lstBxCols.ClearSelected();
-            //            rowValue = "";
-            //            colValue= "";
-            //        }
-            //    }
-
-            //    /*
-            //     * 
-            //     * 
-            //     * 
-            //     * THE BELOW CODE TO CLEAR SELECTIONS ISNT WORKING
-            //     * IT'S NOT WORKING BECAUSE YOU CODED THE LISTBOXES TO REACT TO ANY CHANGE
-            //     * SO WHEN THEY CLEAR, THE ROW/COL CHANGE FUNCTION IS CALLED
-            //     * AND SPITS OUT AN ERROR BECUASE THERE AINT SHIT FOR THAT FUNCTION TO USE ANYMORE
-            //     * 
-            //     */
-            /*
-            //    //lstBxRows.ClearSelected();
-            //    ///lstBxCols.ClearSelected();
-
-
-            //}
-
-            //else
-            //{
-            //    VenueSeats.AddToWaitlist(waitList, customerName);
-            //    lblTopStatus.Text = $"{customerName} added to waitlist";
-            //    rowValue = "";
-            //    colValue = "";
-            //}
-            //}
-            // }
-            */
         }
 
 
         /// <summary>
         /// Checks each button button to see if the table has an occupant
         /// Adjusts the tooltip accordingly
-        /// 
-        /// 
-        /// 
-        /// 
-        /// 
-        /// TRY DOING THIS WITH THE LIST OF BUTTONS NOW!
         /// </summary>
         /// 
 
@@ -604,311 +321,37 @@ namespace Assignment1
             }
         }
 
-        /*
-        private void ButtonMouseHover(object sender, EventArgs e)
-        {
-
-            // A tables
-            // Table a1
-            if (venueArray[0].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnA1, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnA1, $"Booked by: {venueArray[0].customerName}");
-            }
-
-            // table a2
-            if (venueArray[1].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnA2, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnA2, $"Booked by: {venueArray[1].customerName}");
-            }
-
-            // table a3
-            if (venueArray[2].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnA3, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnA3, $"Booked by: {venueArray[2].customerName}");
-            }
-
-            // table a4
-            if (venueArray[3].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnA4, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnA4, $"Booked by: {venueArray[3].customerName}");
-            }
-
-            // B tables
-            // Table B1
-            if (venueArray[4].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnB1, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnB1, $"Booked by: {venueArray[4].customerName}");
-            }
-
-            // Table B2
-            if (venueArray[5].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnB2, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnB2, $"Booked by: {venueArray[5].customerName}");
-            }
-
-            // Table B3
-            if (venueArray[6].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnB3, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnB3, $"Booked by: {venueArray[6].customerName}");
-            }
-
-            // Table B4
-            if (venueArray[7].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnB4, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnB4, $"Booked by: {venueArray[7].customerName}");
-            }
-
-            // Table C1
-            if (venueArray[8].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnC1, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnC1, $"Booked by: {venueArray[8].customerName}");
-            }
-
-            // Table C2
-            if (venueArray[9].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnC2, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnC2, $"Booked by: {venueArray[9].customerName}");
-            }
-
-            // Table C3
-            if (venueArray[10].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnC3, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnC3, $"Booked by: {venueArray[10].customerName}");
-            }
-
-            // Table C4
-            if (venueArray[11].occupiedSeat == false)
-            {
-                toolTip1.SetToolTip(btnC4, "Available");
-            }
-
-            else
-            {
-                toolTip1.SetToolTip(btnC4, $"Booked by: {venueArray[11].customerName}");
-            }
-
-        }
-
-        */
 
         /// <summary>
-        /// Updates the list view of the waitList...list...
         /// 
         /// 
         /// 
-        /// THIS WAS REPLACED BY THE UNIVERSAL DISPLAY UPDATE FUNCTION
+        /// 
+        /// Test Button for testing
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
         /// </summary>
-        private void UpdateWaitlistDisplay()
-        {
-            // This will update the current wait list occupancy
-            
-            lstBxWaitlistDisplay.Items.Clear();
-
-            for (int i = 0; i < waitList.Count; i++)
-            {
-                // Add items to the visible listbox
-                // using i as the target for the insert index ensures
-                // names are displayed in correct order (first come, first server, top to bottom)
-                lstBxWaitlistDisplay.Items.Insert(i, waitList[i]);
-            }
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTestButton_Click(object sender, EventArgs e)
         {
-            //waitList.Add("Poop Chris Wickelysss"); // I dont want to populate it manually every time
-
-            //UpdateWaitlistDisplay();
-            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, ref occupancyStatus);
             UpdateAllOccupancyDisplays();
-
-            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList);
-
-            //UserSelectionRowColCheck();
-
-            /*
-            //string testing2 = "";
-            ////MessageBox.Show(lstBxRows.SelectedItem.ToString());
-            //try
-            //{
-            //    testing2 = lstBxCols.SelectedItem.ToString();
-
-            //    if (testing2 == null)
-            //    {
-            //        throw new NullReferenceException();
-            //    }
-            //}
-
-
-            //catch (NullReferenceException)
-            //{
-            //    lblSystemMessages.Text = "Please select a number from the COLUMN box";
-            //}
-
-
-            //catch (Exception)
-            //{
-
-            //    lblSystemMessages.Text = "Error! ";
-            //}
-
-            //try
-            //{
-            //    string testing = lstBxRows.SelectedItem.ToString();
-
-            //    if (testing == null)
-            //    {
-            //        throw new NullReferenceException();
-            //    }
-            //}
-
-            //catch (NullReferenceException nEx)
-            //{
-            //    lblSystemMessages.Text = "Please select a letter from the ROW box";
-            //}
-
-
-            //catch (Exception eX)
-            //{
-
-            //    lblSystemMessages.Text = "Error! ";
-            //}
-
-            //lblSystemMessages.Text = testing+testing2;
-
-            //// Occupancy checks
-            //string occupancyStatus = "";
-            //VenueSeats.GetOccypancyInformation(venueArray, ref occupancyStatus);
-            //lblTopStatus.Text = occupancyStatus;
-
-            // MessageBox.Show($"{venueArray.Length}");
-
-            // Simple test to get info from the button in the list
-            //MessageBox.Show(buttonList.ElementAt(0).ToString());
-
-            //buttonList.ElementAt(0).BackColor = Color.Blue;
-
-            //// Using a list to change buttons, doesn't work well
-            //foreach (var item in buttonList)
-            //{
-            //    for (int i = 0; i < venueArray.Length; i++)
-            //    {
-            //        if (venueArray[i].occupiedSeat == true)
-            //        {
-            //            item.BackColor = Color.Red;
-            //        }
-
-            //        else
-            //        { 
-            //            item.BackColor = Color.Green; 
-            //        }
-            //    }
-            //}
-
-
-            //for (int i = 0; i < venueArray.Length; i++)
-            //{
-            //    if (venueArray[i].occupiedSeat == true)
-            //    {
-            //        // turn them red
-
-            //        Button caller = (Button)sender;
-            //        MessageBox.Show(caller.ToString());
-            //        caller.BackColor = Color.Red;
-
-            //    }
-
-            //    else
-            //    {
-            //        // turn them green
-            //        this.BackColor = Color.Green;
-            //    }
-            //}
-
-            // Iterate through 12 because there are 12 buttons
-            //for (int i = 0; i < 12; i++)
-            //{
-            //    // if the current array object has a true 
-            //    if (venueArray[i].occupiedSeat == true)
-            //    {
-            //        buttonList.ElementAt(i).BackColor = Color.Red;
-            //    }
-
-            //    // if the current array object has a false
-            //    else
-            //    {
-            //        buttonList.ElementAt(i).BackColor= Color.FromArgb(0, 192, 0);
-            //    }
-
-            //}
-            */
         }
 
         private void btnCancelAll_Click(object sender, EventArgs e)
         {
             VenueSeats.CancelAllBookings(venueArray);
-            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, ref occupancyStatus);
             UpdateAllOccupancyDisplays();
         }
 
         private void btnFillAll_Click(object sender, EventArgs e)
         {
             VenueSeats.FillAllBookings(venueArray);
-            //VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, ref occupancyStatus);
             UpdateAllOccupancyDisplays();
         }
 
@@ -929,12 +372,10 @@ namespace Assignment1
             {
                 lblSystemMessages.Text = "Seats are available";
             }
-            
-
-            
         }
 
         // Clear the entire waitlist
+        // Should this be in the class?
         private void btnClearWaitlist_Click(object sender, EventArgs e)
         {
             if (waitList.Count > 0)
@@ -997,12 +438,9 @@ namespace Assignment1
 
                                 // Remove the person from the waitList
                                 waitList.RemoveAt(0);
-
-
                             }
 
                             UpdateAllOccupancyDisplays();
-
                             ClearRowColLists();
                             break;
                         }
@@ -1011,8 +449,6 @@ namespace Assignment1
                         {
                             break;
                         }
-
-
                     }
 
                     else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == false)
@@ -1026,9 +462,7 @@ namespace Assignment1
             else
             {
                 lblSystemMessages.Text = "Please select a valid table to cancel";
-            }
-
-            
+            }            
         }
     }
 }
