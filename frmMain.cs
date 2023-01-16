@@ -131,6 +131,9 @@ namespace Assignment1
             }
         }
 
+        /// <summary>
+        /// Updates all occupancy display information (table buttons, capacity etc.)
+        /// </summary>
         private void UpdateAllOccupancyDisplays()
         {
             VenueSeats.OccupancyDisplaysUpdater(venueArray, buttonList, waitList, ref occupancyStatus);
@@ -147,7 +150,6 @@ namespace Assignment1
             }
 
             lblTopStatus.Text = occupancyStatus;
-
         }
 
         /// <summary>
@@ -159,9 +161,8 @@ namespace Assignment1
         {
             // This will be where the message goes if the user clicks a table button
             VenueSeats.TableClickedStatus(ref userTableSelection, ref sender);
-            // If a status message is meant to be displayed, remove the messagebox from the 
-            // above method, and change the lbl status here
 
+            // Display a status message based on if the table is or is not empty
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
                 if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
@@ -485,15 +486,16 @@ namespace Assignment1
                     else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == false)
                     {
                         lblSystemMessages.Text = "Seat not occupied!";
+                        ClearRowColLists();
                         break;
                     }
                 }
             }
 
-            else
-            {
-                lblSystemMessages.Text = "Please select a valid table to cancel";
-            }
+            //else
+            //{
+            //    lblSystemMessages.Text = "Please select a valid table to cancel";
+            //}
         }
     }
 }

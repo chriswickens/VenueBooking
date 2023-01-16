@@ -9,7 +9,13 @@ using System.Windows.Forms;
 namespace Assignment1
 {
 
-
+    /// <summary>
+    /// This class creates the table objects
+    /// for the venue
+    /// tableName - Name of the table
+    /// customerName - Name of customer booked at table
+    /// occupiedSeat - bool to show occupied/vacant table
+    /// </summary>
     internal class VenueSeats
     {
 
@@ -170,7 +176,7 @@ namespace Assignment1
         /// <param name="customerName"></param>
         public static void AddBooking(
             VenueSeats[] venueArray,
-            List<string> waitList,
+            List<string> waitList, // You can probablty remove this...
             int userTableSelectionIndex,
             string customerName)
         {
