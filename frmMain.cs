@@ -155,8 +155,9 @@ namespace Assignment1
                         
                     }
 
-                    else
+                    else if (anyOccupancyCheck == false && waitList.Count > 0)
                     {
+                        lblSystemMessages.Text = waitListStatusMessage;
                         break;
                     }
                     
