@@ -147,7 +147,7 @@ namespace Assignment1
                             waitListStatusMessage = tempStatusMessage;
                         }
                         
-                        //lblSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName }";
+                        //txtbxSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName }";
 
 
                         // Remove the person from the waitList
@@ -157,7 +157,7 @@ namespace Assignment1
 
                     else if (anyOccupancyCheck == false && waitList.Count > 0)
                     {
-                        lblSystemMessages.Text = waitListStatusMessage;
+                        txtbxSystemMessages.Text = waitListStatusMessage;
                         break;
                     }
                     
@@ -165,13 +165,13 @@ namespace Assignment1
 
                 if (anyOccupancyCheck == true)
                 {
-                    lblSystemMessages.Text = waitListStatusMessage;
+                    txtbxSystemMessages.Text = waitListStatusMessage;
                 }
             }
 
             else
             {
-                lblSystemMessages.Text = "No people on waitlist";
+                txtbxSystemMessages.Text = "No people on waitlist";
             }
         }
 
@@ -211,13 +211,13 @@ namespace Assignment1
             {
                 if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
                 {
-                    lblSystemMessages.Text = $"{userTableSelection}, {venueArray[i].customerName}";
+                    txtbxSystemMessages.Text = $"{userTableSelection}, {venueArray[i].customerName}";
                     break;
                 }
 
                 else
                 {
-                    lblSystemMessages.Text = $"{userTableSelection}, vacant";
+                    txtbxSystemMessages.Text = $"{userTableSelection}, vacant";
                 }
             }
 
@@ -276,13 +276,13 @@ namespace Assignment1
                     catch (NullReferenceException)
                     {
                         // Specific Error
-                        lblSystemMessages.Text = $"ERROR! No COLUMN value selected!";
+                        txtbxSystemMessages.Text = $"ERROR! No COLUMN value selected!";
                     }
 
                     catch (Exception eX)
                     {
                         // Catch all
-                        lblSystemMessages.Text = $"General Error COLUMN value";
+                        txtbxSystemMessages.Text = $"General Error COLUMN value";
 
                     }
                 }
@@ -291,13 +291,13 @@ namespace Assignment1
             catch (NullReferenceException)
             {
                 // Specific Error
-                lblSystemMessages.Text = $"ERROR! No ROW value selected!";
+                txtbxSystemMessages.Text = $"ERROR! No ROW value selected!";
             }
 
             catch (Exception eX)
             {
                 // Catch all
-                lblSystemMessages.Text = $"General Error ROW value";
+                txtbxSystemMessages.Text = $"General Error ROW value";
             }
         }
 
@@ -314,7 +314,7 @@ namespace Assignment1
             // Checks to see if the name entered is blank
             if (txtBxCustName.Text == "" || txtBxCustName.Text == " ")
             {
-                lblSystemMessages.Text = "Invalid name";
+                txtbxSystemMessages.Text = "Invalid name";
             }
 
             else
@@ -342,7 +342,7 @@ namespace Assignment1
                             VenueSeats.AddBooking(venueArray, waitList, userTableSelectionIndex, txtBxCustName.Text);
                             UpdateAllOccupancyDisplays();
 
-                            lblSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userTableSelection}";
+                            txtbxSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userTableSelection}";
 
                             // Clear the entered name on a successful booking too
                             ClearRowColLists();
@@ -353,7 +353,7 @@ namespace Assignment1
                         // If the tablename is correct, but it is occupied
                         else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
                         {
-                            lblSystemMessages.Text = "Seat is currently booked! Please pick another seat!";
+                            txtbxSystemMessages.Text = "Seat is currently booked! Please pick another seat!";
                             ClearRowColLists();
                         }
                     }
@@ -365,7 +365,7 @@ namespace Assignment1
                 else if (anyOccupancyCheck == false)
                 {
                     // Add to wait list
-                    lblSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
+                    txtbxSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
                     VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
                     UpdateAllOccupancyDisplays();
                     ClearRowColLists();
@@ -444,7 +444,7 @@ namespace Assignment1
             // If there is none, add them to the list
             if (anyOccupancyCheck == false)
             {
-                lblSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
+                txtbxSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
                 VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
                 txtBxCustName.Text = "";
                 UpdateAllOccupancyDisplays();
@@ -452,7 +452,7 @@ namespace Assignment1
 
             else
             {
-                lblSystemMessages.Text = "Seats are available";
+                txtbxSystemMessages.Text = "Seats are available";
             }
         }
 
@@ -469,18 +469,18 @@ namespace Assignment1
                 {
                     waitList.Clear();
                     UpdateAllOccupancyDisplays();
-                    lblSystemMessages.Text = "Wait list CLEARED!";
+                    txtbxSystemMessages.Text = "Wait list CLEARED!";
                 }
 
                 else
                 {
-                    lblSystemMessages.Text = "Wait list NOT cleared";
+                    txtbxSystemMessages.Text = "Wait list NOT cleared";
                 }
             }
 
             else
             {
-                lblSystemMessages.Text = "Wait list is empty";
+                txtbxSystemMessages.Text = "Wait list is empty";
             }
         }
 
@@ -509,7 +509,7 @@ namespace Assignment1
                         if (MessageBox.Show($"Cancel booking at {userTableSelection} for {venueArray[userTableSelectionIndex].customerName}?",
                             "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            lblSystemMessages.Text = $"Booking at {userTableSelection} canceled!";
+                            txtbxSystemMessages.Text = $"Booking at {userTableSelection} canceled!";
                             VenueSeats.CancelBooking(venueArray, userTableSelectionIndex);
                             VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
 
@@ -529,7 +529,7 @@ namespace Assignment1
 
                     else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == false)
                     {
-                        lblSystemMessages.Text = "Seat not occupied!";
+                        txtbxSystemMessages.Text = "Seat not occupied!";
                         ClearRowColLists();
                         break;
                     }
@@ -538,7 +538,7 @@ namespace Assignment1
 
             //else
             //{
-            //    lblSystemMessages.Text = "Please select a valid table to cancel";
+            //    txtbxSystemMessages.Text = "Please select a valid table to cancel";
             //}
         }
     }

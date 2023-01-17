@@ -53,7 +53,6 @@
             this.btnAddToWaitList = new System.Windows.Forms.Button();
             this.btnFillAll = new System.Windows.Forms.Button();
             this.btnCancelAll = new System.Windows.Forms.Button();
-            this.lblSystemMessages = new System.Windows.Forms.Label();
             this.tltpDynamicDisplay = new System.Windows.Forms.ToolTip(this.components);
             this.lstBxWaitlistDisplay = new System.Windows.Forms.ListBox();
             this.btnClearWaitlist = new System.Windows.Forms.Button();
@@ -62,6 +61,7 @@
             this.grbxColumns = new System.Windows.Forms.GroupBox();
             this.pnlSystemMessages = new System.Windows.Forms.Panel();
             this.lblStaticStatusText = new System.Windows.Forms.Label();
+            this.txtbxSystemMessages = new System.Windows.Forms.TextBox();
             this.gbxTables.SuspendLayout();
             this.grpbxWaitlist.SuspendLayout();
             this.grbxRows.SuspendLayout();
@@ -293,7 +293,7 @@
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(95, 42);
             this.btnBook.TabIndex = 8;
-            this.btnBook.Text = "Book";
+            this.btnBook.Text = "&Book";
             this.btnBook.UseVisualStyleBackColor = true;
             this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
@@ -303,7 +303,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 42);
             this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -313,7 +313,7 @@
             this.btnAddToWaitList.Name = "btnAddToWaitList";
             this.btnAddToWaitList.Size = new System.Drawing.Size(95, 42);
             this.btnAddToWaitList.TabIndex = 10;
-            this.btnAddToWaitList.Text = "Add to waitlist";
+            this.btnAddToWaitList.Text = "&Add to waitlist";
             this.btnAddToWaitList.UseVisualStyleBackColor = true;
             this.btnAddToWaitList.Click += new System.EventHandler(this.btnAddToWaitList_Click);
             // 
@@ -323,7 +323,7 @@
             this.btnFillAll.Name = "btnFillAll";
             this.btnFillAll.Size = new System.Drawing.Size(140, 65);
             this.btnFillAll.TabIndex = 11;
-            this.btnFillAll.Text = "Fill all seats";
+            this.btnFillAll.Text = "&Fill all seats";
             this.btnFillAll.UseVisualStyleBackColor = true;
             this.btnFillAll.Click += new System.EventHandler(this.btnFillAll_Click);
             // 
@@ -333,20 +333,9 @@
             this.btnCancelAll.Name = "btnCancelAll";
             this.btnCancelAll.Size = new System.Drawing.Size(140, 65);
             this.btnCancelAll.TabIndex = 12;
-            this.btnCancelAll.Text = "Cancel all bookings";
+            this.btnCancelAll.Text = "Ca&ncel all bookings";
             this.btnCancelAll.UseVisualStyleBackColor = true;
             this.btnCancelAll.Click += new System.EventHandler(this.btnCancelAll_Click);
-            // 
-            // lblSystemMessages
-            // 
-            this.lblSystemMessages.AutoEllipsis = true;
-            this.lblSystemMessages.AutoSize = true;
-            this.lblSystemMessages.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSystemMessages.Location = new System.Drawing.Point(56, 9);
-            this.lblSystemMessages.Name = "lblSystemMessages";
-            this.lblSystemMessages.Size = new System.Drawing.Size(104, 16);
-            this.lblSystemMessages.TabIndex = 13;
-            this.lblSystemMessages.Text = "Status Message";
             // 
             // lstBxWaitlistDisplay
             // 
@@ -365,7 +354,7 @@
             this.btnClearWaitlist.Name = "btnClearWaitlist";
             this.btnClearWaitlist.Size = new System.Drawing.Size(151, 50);
             this.btnClearWaitlist.TabIndex = 17;
-            this.btnClearWaitlist.Text = "Clear Waitlist";
+            this.btnClearWaitlist.Text = "Clear &Waitlist";
             this.btnClearWaitlist.UseVisualStyleBackColor = true;
             this.btnClearWaitlist.Click += new System.EventHandler(this.btnClearWaitlist_Click);
             // 
@@ -403,22 +392,29 @@
             // pnlSystemMessages
             // 
             this.pnlSystemMessages.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlSystemMessages.Controls.Add(this.txtbxSystemMessages);
             this.pnlSystemMessages.Controls.Add(this.lblStaticStatusText);
-            this.pnlSystemMessages.Controls.Add(this.lblSystemMessages);
             this.pnlSystemMessages.Location = new System.Drawing.Point(12, 377);
             this.pnlSystemMessages.Name = "pnlSystemMessages";
-            this.pnlSystemMessages.Size = new System.Drawing.Size(1126, 42);
+            this.pnlSystemMessages.Size = new System.Drawing.Size(1126, 44);
             this.pnlSystemMessages.TabIndex = 21;
             // 
             // lblStaticStatusText
             // 
             this.lblStaticStatusText.AutoSize = true;
             this.lblStaticStatusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaticStatusText.Location = new System.Drawing.Point(3, 9);
+            this.lblStaticStatusText.Location = new System.Drawing.Point(1, 12);
             this.lblStaticStatusText.Name = "lblStaticStatusText";
             this.lblStaticStatusText.Size = new System.Drawing.Size(47, 16);
             this.lblStaticStatusText.TabIndex = 22;
             this.lblStaticStatusText.Text = "Status:";
+            // 
+            // txtbxSystemMessages
+            // 
+            this.txtbxSystemMessages.Location = new System.Drawing.Point(54, 9);
+            this.txtbxSystemMessages.Name = "txtbxSystemMessages";
+            this.txtbxSystemMessages.Size = new System.Drawing.Size(1065, 22);
+            this.txtbxSystemMessages.TabIndex = 23;
             // 
             // frmMain
             // 
@@ -480,7 +476,6 @@
         private System.Windows.Forms.Button btnAddToWaitList;
         private System.Windows.Forms.Button btnFillAll;
         private System.Windows.Forms.Button btnCancelAll;
-        private System.Windows.Forms.Label lblSystemMessages;
         private System.Windows.Forms.ToolTip tltpDynamicDisplay;
         private System.Windows.Forms.ListBox lstBxWaitlistDisplay;
         private System.Windows.Forms.Button btnClearWaitlist;
@@ -489,6 +484,7 @@
         private System.Windows.Forms.GroupBox grbxColumns;
         private System.Windows.Forms.Panel pnlSystemMessages;
         private System.Windows.Forms.Label lblStaticStatusText;
+        private System.Windows.Forms.TextBox txtbxSystemMessages;
     }
 }
 
