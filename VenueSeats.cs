@@ -136,7 +136,7 @@ namespace Assignment1
             {
                 occupationPercent = ((double)occupiedTables) / 12 * 100;
                 occupancyStatus = $"Total Capacity: {occupiedTables}/12 NO CAPACITY!  - " +
-                    $"({Math.Round(occupationPercent, 1)})% Capacity" +
+                    $"({Math.Round(occupationPercent, 1)}%) Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
 
                 // Figured out how to disable buttons!
@@ -147,7 +147,7 @@ namespace Assignment1
             {
                 occupationPercent = ((double)occupiedTables) / 12 * 100;
                 occupancyStatus = $"Total Capacity: {occupiedTables}/12  - " +
-                    $"({Math.Round(occupationPercent, 1)})% Capacity" +
+                    $"({Math.Round(occupationPercent, 1)}%) Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
             }
         }

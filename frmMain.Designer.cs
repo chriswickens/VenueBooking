@@ -60,13 +60,13 @@
             this.grpbxWaitlist = new System.Windows.Forms.GroupBox();
             this.grbxRows = new System.Windows.Forms.GroupBox();
             this.grbxColumns = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSystemMessages = new System.Windows.Forms.Panel();
             this.lblStaticStatusText = new System.Windows.Forms.Label();
             this.gbxTables.SuspendLayout();
             this.grpbxWaitlist.SuspendLayout();
             this.grbxRows.SuspendLayout();
             this.grbxColumns.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlSystemMessages.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxTables
@@ -339,6 +339,7 @@
             // 
             // lblSystemMessages
             // 
+            this.lblSystemMessages.AutoEllipsis = true;
             this.lblSystemMessages.AutoSize = true;
             this.lblSystemMessages.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblSystemMessages.Location = new System.Drawing.Point(56, 9);
@@ -399,15 +400,15 @@
             this.grbxColumns.TabStop = false;
             this.grbxColumns.Text = "Column";
             // 
-            // panel1
+            // pnlSystemMessages
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lblStaticStatusText);
-            this.panel1.Controls.Add(this.lblSystemMessages);
-            this.panel1.Location = new System.Drawing.Point(12, 377);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1126, 42);
-            this.panel1.TabIndex = 21;
+            this.pnlSystemMessages.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlSystemMessages.Controls.Add(this.lblStaticStatusText);
+            this.pnlSystemMessages.Controls.Add(this.lblSystemMessages);
+            this.pnlSystemMessages.Location = new System.Drawing.Point(12, 377);
+            this.pnlSystemMessages.Name = "pnlSystemMessages";
+            this.pnlSystemMessages.Size = new System.Drawing.Size(1126, 42);
+            this.pnlSystemMessages.TabIndex = 21;
             // 
             // lblStaticStatusText
             // 
@@ -425,7 +426,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1155, 435);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlSystemMessages);
             this.Controls.Add(this.grbxColumns);
             this.Controls.Add(this.grbxRows);
             this.Controls.Add(this.grpbxWaitlist);
@@ -447,8 +448,8 @@
             this.grpbxWaitlist.ResumeLayout(false);
             this.grbxRows.ResumeLayout(false);
             this.grbxColumns.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlSystemMessages.ResumeLayout(false);
+            this.pnlSystemMessages.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,7 +487,7 @@
         private System.Windows.Forms.GroupBox grpbxWaitlist;
         private System.Windows.Forms.GroupBox grbxRows;
         private System.Windows.Forms.GroupBox grbxColumns;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlSystemMessages;
         private System.Windows.Forms.Label lblStaticStatusText;
     }
 }
