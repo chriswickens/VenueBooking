@@ -541,5 +541,10 @@ namespace Assignment1
             //    txtbxSystemMessages.Text = "Please select a valid table to cancel";
             //}
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            contextMenuStrip1.Show();
+        }
     }
 }
