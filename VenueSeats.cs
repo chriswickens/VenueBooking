@@ -116,6 +116,7 @@ namespace Assignment1
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
                 // if the current array object has a true 
+                // Need to fix logic if using foreach to add buttons
                 if (venueArray[i].occupiedSeat == true)
                 {
                     occupiedSeats++;
