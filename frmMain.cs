@@ -26,7 +26,6 @@ namespace Assignment1
 
         // Store user data
         string userTableSelection = "";
-        string customerName = ""; // Not used YET
 
         // Occupied seat check stuff
         // This occupancycheck bool could be replaced with an occupancy count
@@ -220,9 +219,6 @@ namespace Assignment1
                     txtbxSystemMessages.Text = $"{userTableSelection}, vacant";
                 }
             }
-
-            
-
         }
 
         /// <summary>
@@ -294,7 +290,7 @@ namespace Assignment1
                 txtbxSystemMessages.Text = $"ERROR! No ROW value selected!";
             }
 
-            catch (Exception eX)
+            catch (Exception)
             {
                 // Catch all
                 txtbxSystemMessages.Text = $"General Error ROW value";
@@ -448,6 +444,7 @@ namespace Assignment1
                 VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
                 txtBxCustName.Text = "";
                 UpdateAllOccupancyDisplays();
+
             }
 
             else
@@ -542,9 +539,5 @@ namespace Assignment1
             //}
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            contextMenuStrip1.Show();
-        }
     }
 }

@@ -108,11 +108,10 @@ namespace Assignment1
             ref string occupancyStatus)
         {
 
-            int waitListCount = 0;
+            int waitListCount = waitList.Count;
             int occupiedTables = 0;
             double occupationPercent = 0;
 
-            waitListCount = waitList.Count;
 
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
@@ -159,8 +158,6 @@ namespace Assignment1
         /// <param name="sender"></param>
         public static void TableClickedStatus(ref string tableSelection, ref object sender)
         {
-            tableSelection = "";
-
             // Sent to a string to use .Length
             string senderString = sender.ToString();
             tableSelection = senderString.Substring(senderString.Length - 2);

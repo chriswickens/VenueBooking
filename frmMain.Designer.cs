@@ -60,16 +60,13 @@
             this.grbxRows = new System.Windows.Forms.GroupBox();
             this.grbxColumns = new System.Windows.Forms.GroupBox();
             this.pnlSystemMessages = new System.Windows.Forms.Panel();
-            this.lblStaticStatusText = new System.Windows.Forms.Label();
             this.txtbxSystemMessages = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removePersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblStaticStatusText = new System.Windows.Forms.Label();
             this.gbxTables.SuspendLayout();
             this.grpbxWaitlist.SuspendLayout();
             this.grbxRows.SuspendLayout();
             this.grbxColumns.SuspendLayout();
             this.pnlSystemMessages.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxTables
@@ -343,7 +340,6 @@
             // lstBxWaitlistDisplay
             // 
             this.lstBxWaitlistDisplay.CausesValidation = false;
-            this.lstBxWaitlistDisplay.ContextMenuStrip = this.contextMenuStrip1;
             this.lstBxWaitlistDisplay.Enabled = false;
             this.lstBxWaitlistDisplay.FormattingEnabled = true;
             this.lstBxWaitlistDisplay.ItemHeight = 16;
@@ -403,6 +399,13 @@
             this.pnlSystemMessages.Size = new System.Drawing.Size(1126, 44);
             this.pnlSystemMessages.TabIndex = 21;
             // 
+            // txtbxSystemMessages
+            // 
+            this.txtbxSystemMessages.Location = new System.Drawing.Point(54, 9);
+            this.txtbxSystemMessages.Name = "txtbxSystemMessages";
+            this.txtbxSystemMessages.Size = new System.Drawing.Size(1065, 22);
+            this.txtbxSystemMessages.TabIndex = 23;
+            // 
             // lblStaticStatusText
             // 
             this.lblStaticStatusText.AutoSize = true;
@@ -412,28 +415,6 @@
             this.lblStaticStatusText.Size = new System.Drawing.Size(47, 16);
             this.lblStaticStatusText.TabIndex = 22;
             this.lblStaticStatusText.Text = "Status:";
-            // 
-            // txtbxSystemMessages
-            // 
-            this.txtbxSystemMessages.Location = new System.Drawing.Point(54, 9);
-            this.txtbxSystemMessages.Name = "txtbxSystemMessages";
-            this.txtbxSystemMessages.Size = new System.Drawing.Size(1065, 22);
-            this.txtbxSystemMessages.TabIndex = 23;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removePersonToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // removePersonToolStripMenuItem
-            // 
-            this.removePersonToolStripMenuItem.Name = "removePersonToolStripMenuItem";
-            this.removePersonToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.removePersonToolStripMenuItem.Text = "Remove Person";
             // 
             // frmMain
             // 
@@ -465,7 +446,6 @@
             this.grbxColumns.ResumeLayout(false);
             this.pnlSystemMessages.ResumeLayout(false);
             this.pnlSystemMessages.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,8 +485,6 @@
         private System.Windows.Forms.Panel pnlSystemMessages;
         private System.Windows.Forms.Label lblStaticStatusText;
         private System.Windows.Forms.TextBox txtbxSystemMessages;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem removePersonToolStripMenuItem;
     }
 }
 
