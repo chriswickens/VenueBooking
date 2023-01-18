@@ -340,7 +340,6 @@
             // lstBxWaitlistDisplay
             // 
             this.lstBxWaitlistDisplay.CausesValidation = false;
-            this.lstBxWaitlistDisplay.Enabled = false;
             this.lstBxWaitlistDisplay.FormattingEnabled = true;
             this.lstBxWaitlistDisplay.ItemHeight = 16;
             this.lstBxWaitlistDisplay.Location = new System.Drawing.Point(40, 29);
