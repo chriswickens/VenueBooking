@@ -14,7 +14,7 @@ namespace Assignment1
     public partial class frmMain : Form
     {
 
-        // Here or in the class?
+        // Initialize object arrays
         VenueSeats[] venueArray = new VenueSeats[12]; // Seat Array...The array for the seats...
 
         List<string> waitList = new List<string>(); // Waitlist...list
@@ -23,26 +23,22 @@ namespace Assignment1
 
         //List<ToolTip> tList = new List<ToolTip>();
 
-
         // Store user data
         string userSeatSelection = "";
 
         // Occupied seat check stuff
-        // This occupancycheck bool could be replaced with an occupancy count
-        // This would require a small bit of work, since the counting variable is
-        // local only to the GetOccypancyInformation method in VenuSeats
         bool anyOccupancyCheck = false;
-        int occupiedSeatsCount = 0; // Probably dont need this, it is in the class method
         int occupancyIndexLocation = 0;
 
         // Top Status bar variable
         string occupancyStatus = "";
 
         // row/col selection variables
+        bool rowColCheck = false;
         int userSeatSelectionIndex = 0;
         string rowValue = "";
         string colValue = "";
-        bool rowColCheck = false;
+        
 
         public frmMain()
         {
@@ -70,37 +66,30 @@ namespace Assignment1
             buttonList.Add(btnC3);
             buttonList.Add(btnC4);
 
-            // Other control buttons
-            // Index starts at 12 for these
-            // You could separate these into another list
-            // But do you want to spend that much time on this?
-            // When you dont need to? lol
-            buttonList.Add(btnBook);
-            buttonList.Add(btnCancel);
-            buttonList.Add(btnAddToWaitList);
-            buttonList.Add(btnFillAll);
-            buttonList.Add(btnCancelAll);
-            buttonList.Add(btnClearWaitlist);
-
-
-            // Initialize seat objects
+            // Assign values to the array items
             // A row
-            venueArray[0] = new VenueSeats("A1", "chris wickens", true);
-            venueArray[1] = new VenueSeats("A2", "Timmothy", true);
+            venueArray[0] = new VenueSeats("A1", "", false);
+            venueArray[1] = new VenueSeats("A2", "", false);
             venueArray[2] = new VenueSeats("A3", "", false);
             venueArray[3] = new VenueSeats("A4", "", false);
 
             // B row
             venueArray[4] = new VenueSeats("B1", "", false);
-            venueArray[5] = new VenueSeats("B2", "Tadd Zammer", true);
+            venueArray[5] = new VenueSeats("B2", "", false);
             venueArray[6] = new VenueSeats("B3", "", false);
             venueArray[7] = new VenueSeats("B4", "", false);
 
             // C row
             venueArray[8] = new VenueSeats("C1", "", false);
-            venueArray[9] = new VenueSeats("C2", "Tom Smith", true);
+            venueArray[9] = new VenueSeats("C2", "", false);
             venueArray[10] = new VenueSeats("C3", "", false);
             venueArray[11] = new VenueSeats("C4", "", false);
+
+            // Filling some seats for testing
+            venueArray[8] = new VenueSeats("C1", "Chris Wickens", true);
+            venueArray[0] = new VenueSeats("A1", "Tadd Zimmer", true);
+            venueArray[6] = new VenueSeats("B3", "GirZim", true);
+            venueArray[10] = new VenueSeats("C3", "Taco Ted", true);
 
             UpdateAllOccupancyDisplays();
 
@@ -127,14 +116,13 @@ namespace Assignment1
 
                 while (waitList.Count > 0)
                 {
-                    VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
-                    
+                    VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);                    
                     
                     // Add the first item from the list to the booking
                     if (anyOccupancyCheck == true)
                     {
                         tempStatusMessage = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].seatName}";
-                        VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
+                        VenueSeats.AddBooking(venueArray, occupancyIndexLocation, waitList.ElementAt(0));
                         
                         if (storedWaitlistCount > 1)
                         {
@@ -146,12 +134,8 @@ namespace Assignment1
                             waitListStatusMessage = tempStatusMessage;
                         }
                         
-                        //txtbxSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].seatName }";
-
-
                         // Remove the person from the waitList
-                        waitList.RemoveAt(0);
-                        
+                        waitList.RemoveAt(0);                        
                     }
 
                     else if (anyOccupancyCheck == false && waitList.Count > 0)
@@ -186,9 +170,9 @@ namespace Assignment1
 
             for (int i = 0; i < waitList.Count; i++)
             {
-                // Add items to the visible listbox
+                // Add items to the waitlist listbox
                 // using i as the target for the insert index ensures
-                // names are displayed in correct order (first come, first server, top to bottom)
+                // names are displayed in correct order (first come, first serve, top to bottom)
                 lstBxWaitlistDisplay.Items.Insert(i, waitList[i]);
             }
 
@@ -322,7 +306,6 @@ namespace Assignment1
                 UserSelectionRowColCheck();
 
                 // If their rowCol check was good, and there is at least one occupancy
-
                 if (rowColCheck == true && anyOccupancyCheck == true)
                 {
 
@@ -335,7 +318,7 @@ namespace Assignment1
 
                             // Book the seat for the person at the selected location
                             userSeatSelectionIndex = i;
-                            VenueSeats.AddBooking(venueArray, waitList, userSeatSelectionIndex, txtBxCustName.Text);
+                            VenueSeats.AddBooking(venueArray, userSeatSelectionIndex, txtBxCustName.Text);
                             UpdateAllOccupancyDisplays();
 
                             txtbxSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userSeatSelection}";
@@ -369,7 +352,6 @@ namespace Assignment1
                 }
             }
         }
-
 
         /// <summary>
         /// Checks each button button to see if the seat has an occupant

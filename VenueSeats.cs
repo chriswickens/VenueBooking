@@ -124,10 +124,8 @@ namespace Assignment1
 
                 // if the current array object has a false
                 else
-                {
-                    // Set vacant seat colour to green
+                {                    
                     buttonList.ElementAt(i).BackColor = Color.FromArgb(0, 192, 0);
-
                 }
             }
 
@@ -173,7 +171,6 @@ namespace Assignment1
         /// <param name="customerName"></param>
         public static void AddBooking(
             VenueSeats[] venueArray,
-            List<string> waitList, // You can probablty remove this...
             int userSeatSelectionIndex,
             string customerName)
         {
