@@ -10,16 +10,16 @@ namespace Assignment1
 {
 
     /// <summary>
-    /// This class creates the table objects
+    /// This class creates the seat objects
     /// for the venue
-    /// tableName - Name of the table
-    /// customerName - Name of customer booked at table
-    /// occupiedSeat - bool to show occupied/vacant table
+    /// seatName - Name of the seat
+    /// customerName - Name of customer booked at seat
+    /// occupiedSeat - bool to show occupied/vacant seat
     /// </summary>
     internal class VenueSeats
     {
 
-        public string tableName;
+        public string seatName;
         public string customerName;
         public bool occupiedSeat;
 
@@ -45,7 +45,7 @@ namespace Assignment1
         // Default constructor
         public VenueSeats()
         {
-            this.tableName = string.Empty;
+            this.seatName = string.Empty;
             this.customerName = string.Empty;
             this.occupiedSeat = false;
 
@@ -53,11 +53,11 @@ namespace Assignment1
 
         // Overloaded constructor
         public VenueSeats(
-            string tableName,
+            string seatName,
             string customerName,
             bool occupiedSeat)
         {
-            this.tableName = tableName;
+            this.seatName = seatName;
             this.customerName = customerName;
             this.occupiedSeat = occupiedSeat;
         }
@@ -109,7 +109,7 @@ namespace Assignment1
         {
 
             int waitListCount = waitList.Count;
-            int occupiedTables = 0;
+            int occupiedSeats = 0;
             double occupationPercent = 0;
 
 
@@ -118,23 +118,23 @@ namespace Assignment1
                 // if the current array object has a true 
                 if (venueArray[i].occupiedSeat == true)
                 {
-                    occupiedTables++;
+                    occupiedSeats++;
                     buttonList.ElementAt(i).BackColor = Color.Red;
                 }
 
                 // if the current array object has a false
                 else
                 {
-                    // Set vacant table colour to green
+                    // Set vacant seat colour to green
                     buttonList.ElementAt(i).BackColor = Color.FromArgb(0, 192, 0);
 
                 }
             }
 
-            if (occupiedTables == 12)
+            if (occupiedSeats == 12)
             {
-                occupationPercent = ((double)occupiedTables) / 12 * 100;
-                occupancyStatus = $"Total Capacity: {occupiedTables}/12 NO CAPACITY!  - " +
+                occupationPercent = ((double)occupiedSeats) / 12 * 100;
+                occupancyStatus = $"Total Capacity: {occupiedSeats}/12 NO CAPACITY!  - " +
                     $"({Math.Round(occupationPercent, 1)}%) Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
 
@@ -144,24 +144,24 @@ namespace Assignment1
 
             else
             {
-                occupationPercent = ((double)occupiedTables) / 12 * 100;
-                occupancyStatus = $"Total Capacity: {occupiedTables}/12  - " +
+                occupationPercent = ((double)occupiedSeats) / 12 * 100;
+                occupancyStatus = $"Total Capacity: {occupiedSeats}/12  - " +
                     $"({Math.Round(occupationPercent, 1)}%) Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
             }
         }
 
         /// <summary>
-        /// Display information about the table being clicked on
+        /// Display information about the seat being clicked on
         /// </summary>
-        /// <param name="tableSelection"></param>
+        /// <param name="seatSelection"></param>
         /// <param name="sender"></param>
-        public static void TableClickedStatus(ref string tableSelection, ref object sender)
+        public static void SeatClickedStatus(ref string seatSelection, ref object sender)
         {
             // Sent to a string to use .Length
             string senderString = sender.ToString();
-            tableSelection = senderString.Substring(senderString.Length - 2);
-            //MessageBox.Show(tableSelection);
+            seatSelection = senderString.Substring(senderString.Length - 2);
+            //MessageBox.Show(seatSelection);
         }
 
         /// <summary>
@@ -169,29 +169,29 @@ namespace Assignment1
         /// </summary>
         /// <param name="venueArray"></param>
         /// <param name="waitList"></param>
-        /// <param name="userTableSelectionIndex"></param>
+        /// <param name="userSeatSelectionIndex"></param>
         /// <param name="customerName"></param>
         public static void AddBooking(
             VenueSeats[] venueArray,
             List<string> waitList, // You can probablty remove this...
-            int userTableSelectionIndex,
+            int userSeatSelectionIndex,
             string customerName)
         {
-            venueArray[userTableSelectionIndex].occupiedSeat = true;
-            venueArray[userTableSelectionIndex].customerName = customerName;
+            venueArray[userSeatSelectionIndex].occupiedSeat = true;
+            venueArray[userSeatSelectionIndex].customerName = customerName;
         }
 
         /// <summary>
         /// Cancel a booking
         /// </summary>
         /// <param name="venueArray"></param>
-        /// <param name="userTableSelectionIndex"></param>
+        /// <param name="userSeatSelectionIndex"></param>
         public static void CancelBooking(
             VenueSeats[] venueArray,
-            int userTableSelectionIndex)
+            int userSeatSelectionIndex)
         {
-            venueArray[userTableSelectionIndex].occupiedSeat = false;
-            venueArray[userTableSelectionIndex].customerName = "";
+            venueArray[userSeatSelectionIndex].occupiedSeat = false;
+            venueArray[userSeatSelectionIndex].customerName = "";
         }
 
         /// <summary>

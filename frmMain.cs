@@ -15,7 +15,7 @@ namespace Assignment1
     {
 
         // Here or in the class?
-        VenueSeats[] venueArray = new VenueSeats[12]; // Table Array...The array for the tables...
+        VenueSeats[] venueArray = new VenueSeats[12]; // Seat Array...The array for the seats...
 
         List<string> waitList = new List<string>(); // Waitlist...list
 
@@ -25,21 +25,21 @@ namespace Assignment1
 
 
         // Store user data
-        string userTableSelection = "";
+        string userSeatSelection = "";
 
         // Occupied seat check stuff
         // This occupancycheck bool could be replaced with an occupancy count
         // This would require a small bit of work, since the counting variable is
         // local only to the GetOccypancyInformation method in VenuSeats
         bool anyOccupancyCheck = false;
-        int occupiedTablesCount = 0; // Probably dont need this, it is in the class method
+        int occupiedSeatsCount = 0; // Probably dont need this, it is in the class method
         int occupancyIndexLocation = 0;
 
         // Top Status bar variable
         string occupancyStatus = "";
 
         // row/col selection variables
-        int userTableSelectionIndex = 0;
+        int userSeatSelectionIndex = 0;
         string rowValue = "";
         string colValue = "";
         bool rowColCheck = false;
@@ -83,7 +83,7 @@ namespace Assignment1
             buttonList.Add(btnClearWaitlist);
 
 
-            // Initialize table objects
+            // Initialize seat objects
             // A row
             venueArray[0] = new VenueSeats("A1", "chris wickens", true);
             venueArray[1] = new VenueSeats("A2", "Timmothy", true);
@@ -112,7 +112,7 @@ namespace Assignment1
         /// </summary>
         public void OccupancyWaitListCheck()
         {
-            // The waitlist message after moving people to a table
+            // The waitlist message after moving people to a seat
             string waitListStatusMessage = "";
 
             // Temp storage to concatenate the message
@@ -133,7 +133,7 @@ namespace Assignment1
                     // Add the first item from the list to the booking
                     if (anyOccupancyCheck == true)
                     {
-                        tempStatusMessage = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName}";
+                        tempStatusMessage = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].seatName}";
                         VenueSeats.AddBooking(venueArray, waitList, occupancyIndexLocation, waitList.ElementAt(0));
                         
                         if (storedWaitlistCount > 1)
@@ -146,7 +146,7 @@ namespace Assignment1
                             waitListStatusMessage = tempStatusMessage;
                         }
                         
-                        //txtbxSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].tableName }";
+                        //txtbxSystemMessages.Text = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].seatName }";
 
 
                         // Remove the person from the waitList
@@ -175,7 +175,7 @@ namespace Assignment1
         }
 
         /// <summary>
-        /// Updates all occupancy display information (table buttons, capacity etc.)
+        /// Updates all occupancy display information (seat buttons, capacity etc.)
         /// </summary>
         private void UpdateAllOccupancyDisplays()
         {
@@ -196,27 +196,27 @@ namespace Assignment1
         }
 
         /// <summary>
-        /// Assigns the table number to a variable for use
+        /// Assigns the seat number to a variable for use
         /// based on what button the user clicked
         /// </summary>
         /// <param name="buttonText"></param>
-        private void TableDisplayButtonClicked(object sender, EventArgs e)
+        private void SeatDisplayButtonClicked(object sender, EventArgs e)
         {
-            // This will be where the message goes if the user clicks a table button
-            VenueSeats.TableClickedStatus(ref userTableSelection, ref sender);
+            // This will be where the message goes if the user clicks a seat button
+            VenueSeats.SeatClickedStatus(ref userSeatSelection, ref sender);
 
-            // Display a status message based on if the table is or is not empty
+            // Display a status message based on if the seat is or is not empty
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
-                if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
+                if (venueArray[i].seatName == userSeatSelection && venueArray[i].occupiedSeat == true)
                 {
-                    txtbxSystemMessages.Text = $"{userTableSelection}, {venueArray[i].customerName}";
+                    txtbxSystemMessages.Text = $"{userSeatSelection}, {venueArray[i].customerName}";
                     break;
                 }
 
                 else
                 {
-                    txtbxSystemMessages.Text = $"{userTableSelection}, vacant";
+                    txtbxSystemMessages.Text = $"{userSeatSelection}, vacant";
                 }
             }
         }
@@ -263,9 +263,9 @@ namespace Assignment1
                         }
 
                         // Valid Row/Col selection
-                        // Assign selection to userTableSelection for future use
+                        // Assign selection to userSeatSelection for future use
                         rowColCheck = true;
-                        userTableSelection = rowValue + colValue;
+                        userSeatSelection = rowValue + colValue;
 
                     }
 
@@ -299,7 +299,7 @@ namespace Assignment1
 
         /// <summary>
         /// When the user clicks the booking button
-        /// Check for a valid name, row and col selection, and ensure there are empty tables
+        /// Check for a valid name, row and col selection, and ensure there are empty seats
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -326,19 +326,19 @@ namespace Assignment1
                 if (rowColCheck == true && anyOccupancyCheck == true)
                 {
 
-                    // Iterate over how many tables there are
+                    // Iterate over how many seats there are
                     for (int i = 0; i < venueArray.GetLength(0); i++)
                     {
-                        // if the current tablename matches the user selection AND the table is not occupied
-                        if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == false)
+                        // if the current seatname matches the user selection AND the seat is not occupied
+                        if (venueArray[i].seatName == userSeatSelection && venueArray[i].occupiedSeat == false)
                         {
 
-                            // Book the table for the person at the selected location
-                            userTableSelectionIndex = i;
-                            VenueSeats.AddBooking(venueArray, waitList, userTableSelectionIndex, txtBxCustName.Text);
+                            // Book the seat for the person at the selected location
+                            userSeatSelectionIndex = i;
+                            VenueSeats.AddBooking(venueArray, waitList, userSeatSelectionIndex, txtBxCustName.Text);
                             UpdateAllOccupancyDisplays();
 
-                            txtbxSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userTableSelection}";
+                            txtbxSystemMessages.Text = $"{txtBxCustName.Text} booked at seat {userSeatSelection}";
 
                             // Clear the entered name on a successful booking too
                             ClearRowColLists();
@@ -346,8 +346,8 @@ namespace Assignment1
                             break;
                         }
 
-                        // If the tablename is correct, but it is occupied
-                        else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
+                        // If the seatname is correct, but it is occupied
+                        else if (venueArray[i].seatName == userSeatSelection && venueArray[i].occupiedSeat == true)
                         {
                             txtbxSystemMessages.Text = "Seat is currently booked! Please pick another seat!";
                             ClearRowColLists();
@@ -372,14 +372,14 @@ namespace Assignment1
 
 
         /// <summary>
-        /// Checks each button button to see if the table has an occupant
+        /// Checks each button button to see if the seat has an occupant
         /// Adjusts the tooltip accordingly
         /// </summary>
         /// 
         private void ButtonMouseHover(object sender, EventArgs e)
         {
             // You can pass the ToolTip toolTip1 into a method/function apparently?
-            // Iterates through the length of the venue tables array
+            // Iterates through the length of the venue seats array
             // Assigns the proper tooltip
 
             // Not a big fan of how much work this technically does
@@ -485,8 +485,8 @@ namespace Assignment1
         {
 
             // Reset to prevent old data from causing errors
-            userTableSelection = "";
-            userTableSelectionIndex = 0;
+            userSeatSelection = "";
+            userSeatSelectionIndex = 0;
 
             // if the user selected a proper row and col
             UserSelectionRowColCheck();
@@ -498,16 +498,16 @@ namespace Assignment1
                 for (int i = 0; i < venueArray.GetLength(0); i++)
                 {
 
-                    if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == true)
+                    if (venueArray[i].seatName == userSeatSelection && venueArray[i].occupiedSeat == true)
                     {
 
-                        userTableSelectionIndex = i;
+                        userSeatSelectionIndex = i;
 
-                        if (MessageBox.Show($"Cancel booking at {userTableSelection} for {venueArray[userTableSelectionIndex].customerName}?",
+                        if (MessageBox.Show($"Cancel booking at {userSeatSelection} for {venueArray[userSeatSelectionIndex].customerName}?",
                             "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            txtbxSystemMessages.Text = $"Booking at {userTableSelection} canceled!";
-                            VenueSeats.CancelBooking(venueArray, userTableSelectionIndex);
+                            txtbxSystemMessages.Text = $"Booking at {userSeatSelection} canceled!";
+                            VenueSeats.CancelBooking(venueArray, userSeatSelectionIndex);
                             VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
 
                             // After canceling a booking, check to see if there is anyone on the waitList
@@ -524,7 +524,7 @@ namespace Assignment1
                         }
                     }
 
-                    else if (venueArray[i].tableName == userTableSelection && venueArray[i].occupiedSeat == false)
+                    else if (venueArray[i].seatName == userSeatSelection && venueArray[i].occupiedSeat == false)
                     {
                         txtbxSystemMessages.Text = "Seat not occupied!";
                         ClearRowColLists();
@@ -535,7 +535,7 @@ namespace Assignment1
 
             //else
             //{
-            //    txtbxSystemMessages.Text = "Please select a valid table to cancel";
+            //    txtbxSystemMessages.Text = "Please select a valid seat to cancel";
             //}
         }
 

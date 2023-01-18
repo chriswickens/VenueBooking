@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.gbxTables = new System.Windows.Forms.GroupBox();
+            this.gbxSeats = new System.Windows.Forms.GroupBox();
             this.btnC4 = new System.Windows.Forms.Button();
             this.btnC3 = new System.Windows.Forms.Button();
             this.btnC2 = new System.Windows.Forms.Button();
@@ -62,34 +62,34 @@
             this.pnlSystemMessages = new System.Windows.Forms.Panel();
             this.txtbxSystemMessages = new System.Windows.Forms.TextBox();
             this.lblStaticStatusText = new System.Windows.Forms.Label();
-            this.gbxTables.SuspendLayout();
+            this.gbxSeats.SuspendLayout();
             this.grpbxWaitlist.SuspendLayout();
             this.grbxRows.SuspendLayout();
             this.grbxColumns.SuspendLayout();
             this.pnlSystemMessages.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbxTables
+            // gbxSeats
             // 
-            this.gbxTables.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.gbxTables.Controls.Add(this.btnC4);
-            this.gbxTables.Controls.Add(this.btnC3);
-            this.gbxTables.Controls.Add(this.btnC2);
-            this.gbxTables.Controls.Add(this.btnC1);
-            this.gbxTables.Controls.Add(this.btnB4);
-            this.gbxTables.Controls.Add(this.btnB3);
-            this.gbxTables.Controls.Add(this.btnB2);
-            this.gbxTables.Controls.Add(this.btnB1);
-            this.gbxTables.Controls.Add(this.btnA4);
-            this.gbxTables.Controls.Add(this.btnA3);
-            this.gbxTables.Controls.Add(this.btnA2);
-            this.gbxTables.Controls.Add(this.btnA1);
-            this.gbxTables.Location = new System.Drawing.Point(12, 54);
-            this.gbxTables.Name = "gbxTables";
-            this.gbxTables.Size = new System.Drawing.Size(447, 308);
-            this.gbxTables.TabIndex = 0;
-            this.gbxTables.TabStop = false;
-            this.gbxTables.Text = "Venue";
+            this.gbxSeats.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.gbxSeats.Controls.Add(this.btnC4);
+            this.gbxSeats.Controls.Add(this.btnC3);
+            this.gbxSeats.Controls.Add(this.btnC2);
+            this.gbxSeats.Controls.Add(this.btnC1);
+            this.gbxSeats.Controls.Add(this.btnB4);
+            this.gbxSeats.Controls.Add(this.btnB3);
+            this.gbxSeats.Controls.Add(this.btnB2);
+            this.gbxSeats.Controls.Add(this.btnB1);
+            this.gbxSeats.Controls.Add(this.btnA4);
+            this.gbxSeats.Controls.Add(this.btnA3);
+            this.gbxSeats.Controls.Add(this.btnA2);
+            this.gbxSeats.Controls.Add(this.btnA1);
+            this.gbxSeats.Location = new System.Drawing.Point(12, 54);
+            this.gbxSeats.Name = "gbxSeats";
+            this.gbxSeats.Size = new System.Drawing.Size(447, 308);
+            this.gbxSeats.TabIndex = 0;
+            this.gbxSeats.TabStop = false;
+            this.gbxSeats.Text = "Venue";
             // 
             // btnC4
             // 
@@ -100,7 +100,7 @@
             this.btnC4.TabIndex = 11;
             this.btnC4.Text = "C4";
             this.btnC4.UseVisualStyleBackColor = false;
-            this.btnC4.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnC4.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnC4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC3
@@ -112,7 +112,7 @@
             this.btnC3.TabIndex = 10;
             this.btnC3.Text = "C3";
             this.btnC3.UseVisualStyleBackColor = false;
-            this.btnC3.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnC3.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnC3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC2
@@ -124,7 +124,7 @@
             this.btnC2.TabIndex = 9;
             this.btnC2.Text = "C2";
             this.btnC2.UseVisualStyleBackColor = false;
-            this.btnC2.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnC2.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnC2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnC1
@@ -136,7 +136,7 @@
             this.btnC1.TabIndex = 8;
             this.btnC1.Text = "C1";
             this.btnC1.UseVisualStyleBackColor = false;
-            this.btnC1.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnC1.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnC1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB4
@@ -148,7 +148,7 @@
             this.btnB4.TabIndex = 7;
             this.btnB4.Text = "B4";
             this.btnB4.UseVisualStyleBackColor = false;
-            this.btnB4.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnB4.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnB4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB3
@@ -160,7 +160,7 @@
             this.btnB3.TabIndex = 6;
             this.btnB3.Text = "B3";
             this.btnB3.UseVisualStyleBackColor = false;
-            this.btnB3.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnB3.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnB3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB2
@@ -172,7 +172,7 @@
             this.btnB2.TabIndex = 5;
             this.btnB2.Text = "B2";
             this.btnB2.UseVisualStyleBackColor = false;
-            this.btnB2.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnB2.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnB2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnB1
@@ -184,7 +184,7 @@
             this.btnB1.TabIndex = 4;
             this.btnB1.Text = "B1";
             this.btnB1.UseVisualStyleBackColor = false;
-            this.btnB1.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnB1.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnB1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA4
@@ -196,7 +196,7 @@
             this.btnA4.TabIndex = 3;
             this.btnA4.Text = "A4";
             this.btnA4.UseVisualStyleBackColor = false;
-            this.btnA4.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnA4.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnA4.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA3
@@ -208,7 +208,7 @@
             this.btnA3.TabIndex = 2;
             this.btnA3.Text = "A3";
             this.btnA3.UseVisualStyleBackColor = false;
-            this.btnA3.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnA3.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnA3.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA2
@@ -220,7 +220,7 @@
             this.btnA2.TabIndex = 1;
             this.btnA2.Text = "A2";
             this.btnA2.UseVisualStyleBackColor = false;
-            this.btnA2.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnA2.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnA2.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // btnA1
@@ -232,7 +232,7 @@
             this.btnA1.TabIndex = 0;
             this.btnA1.Text = "A1";
             this.btnA1.UseVisualStyleBackColor = false;
-            this.btnA1.Click += new System.EventHandler(this.TableDisplayButtonClicked);
+            this.btnA1.Click += new System.EventHandler(this.SeatDisplayButtonClicked);
             this.btnA1.MouseHover += new System.EventHandler(this.ButtonMouseHover);
             // 
             // lblTopStatus
@@ -434,13 +434,13 @@
             this.Controls.Add(this.txtBxCustName);
             this.Controls.Add(this.lblCustName);
             this.Controls.Add(this.lblTopStatus);
-            this.Controls.Add(this.gbxTables);
+            this.Controls.Add(this.gbxSeats);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Assignment 1";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.gbxTables.ResumeLayout(false);
+            this.gbxSeats.ResumeLayout(false);
             this.grpbxWaitlist.ResumeLayout(false);
             this.grbxRows.ResumeLayout(false);
             this.grbxColumns.ResumeLayout(false);
@@ -453,7 +453,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbxTables;
+        private System.Windows.Forms.GroupBox gbxSeats;
         private System.Windows.Forms.Button btnC4;
         private System.Windows.Forms.Button btnC3;
         private System.Windows.Forms.Button btnC2;
