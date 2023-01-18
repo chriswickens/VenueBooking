@@ -440,11 +440,18 @@ namespace Assignment1
             // If there is none, add them to the list
             if (anyOccupancyCheck == false)
             {
-                txtbxSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
-                VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
-                txtBxCustName.Text = "";
-                UpdateAllOccupancyDisplays();
+                if (txtBxCustName.Text == "" || txtBxCustName.Text == " ")
+                {
+                    txtbxSystemMessages.Text = "Please enter a name to add to the waitlist";
+                }
 
+                else
+                {
+                    txtbxSystemMessages.Text = $"{txtBxCustName.Text} added to waitlist!";
+                    VenueSeats.AddToWaitlist(waitList, txtBxCustName.Text);
+                    txtBxCustName.Text = "";
+                    UpdateAllOccupancyDisplays();
+                }
             }
 
             else
