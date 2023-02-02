@@ -74,13 +74,14 @@ namespace Assignment1
             //}
 
             //MessageBox.Show($"{buttonList[0].Text}");
-
+            MessageBox.Show($"{venueArray.Count()}");
             // Assign values to the array items
             // A row
             venueArray[0] = new VenueSeats("A1", "", false);
             venueArray[1] = new VenueSeats("A2", "", false);
             venueArray[2] = new VenueSeats("A3", "", false);
             venueArray[3] = new VenueSeats("A4", "", false);
+            
 
             // B row
             venueArray[4] = new VenueSeats("B1", "", false);
@@ -450,9 +451,15 @@ namespace Assignment1
                 txtbxSystemMessages.Text = "Seats are available";
             }
         }
+  
+        /*
+         * 
+         * 
+         * Clear the entire waitlist Get rid of this and the display when you're done
+         * 
+         * 
+         */
 
-        // Clear the entire waitlist
-        // Should this be in the class?
         private void btnClearWaitlist_Click(object sender, EventArgs e)
         {
             if (waitList.Count > 0)
@@ -530,12 +537,6 @@ namespace Assignment1
                     }
                 }
             }
-
-            //else
-            //{
-            //    txtbxSystemMessages.Text = "Please select a valid seat to cancel";
-            //}
         }
-
     }
 }

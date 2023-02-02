@@ -23,24 +23,6 @@ namespace Assignment1
         public string customerName;
         public bool occupiedSeat;
 
-        private string test;
-
-        //public string Test
-        //{
-        //    get
-        //    {
-        //        return Test;
-        //    }
-
-        //    set 
-        //    { 
-        //        Test = value; 
-        //    }
-
-        //}           
-
-        // Declare here?
-        VenueSeats[] arrayTest = new VenueSeats[12];
 
         // Default constructor
         public VenueSeats()
