@@ -18,26 +18,26 @@ namespace Assignment1
     /// </summary>
     internal class VenueSeats
     {
-
+        // set to private later
         public string seatName;
         public string customerName;
         public bool occupiedSeat;
 
         private string test;
 
-        public string Test
-        {
-            get
-            {
-                return Test;
-            }
+        //public string Test
+        //{
+        //    get
+        //    {
+        //        return Test;
+        //    }
 
-            set 
-            { 
-                Test = value; 
-            }
+        //    set 
+        //    { 
+        //        Test = value; 
+        //    }
 
-        }           
+        //}           
 
         // Declare here?
         VenueSeats[] arrayTest = new VenueSeats[12];

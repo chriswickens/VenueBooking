@@ -17,6 +17,7 @@ namespace Assignment1
         // Initialize object arrays
         VenueSeats[] venueArray = new VenueSeats[12]; // Seat Array...The array for the seats...
 
+        // Move To the class
         List<string> waitList = new List<string>(); // Waitlist...list
 
         List<Button> buttonList = new List<Button>(); // CREATE LIST FOR BUTTONS
@@ -49,28 +50,28 @@ namespace Assignment1
         {
             // Add buttons to a list for various reasons
             // A buttons
-            //buttonList.Add(btnA1);
-            //buttonList.Add(btnA2);
-            //buttonList.Add(btnA3);
-            //buttonList.Add(btnA4);
+            buttonList.Add(btnA1);
+            buttonList.Add(btnA2);
+            buttonList.Add(btnA3);
+            buttonList.Add(btnA4);
 
-            //// B Buttons
-            //buttonList.Add(btnB1);
-            //buttonList.Add(btnB2);
-            //buttonList.Add(btnB3);
-            //buttonList.Add(btnB4);
+            // B Buttons
+            buttonList.Add(btnB1);
+            buttonList.Add(btnB2);
+            buttonList.Add(btnB3);
+            buttonList.Add(btnB4);
 
-            //// C Buttons
-            //buttonList.Add(btnC1);
-            //buttonList.Add(btnC2);
-            //buttonList.Add(btnC3);
-            //buttonList.Add(btnC4);
+            // C Buttons
+            buttonList.Add(btnC1);
+            buttonList.Add(btnC2);
+            buttonList.Add(btnC3);
+            buttonList.Add(btnC4);
 
-            foreach (Button item in gbxSeats.Controls)
-            {
-                buttonList.Add(item);
+            //foreach (Button item in gbxSeats.Controls)
+            //{
+            //    buttonList.Add(item);
 
-            }
+            //}
 
             //MessageBox.Show($"{buttonList[0].Text}");
 
