@@ -19,9 +19,9 @@ namespace Assignment1
     internal class VenueSeats
     {
         // set to private later
-        public string seatName;
-        public string customerName;
-        public bool occupiedSeat;
+        internal string seatName;
+        internal string customerName;
+        internal bool occupiedSeat;
 
 
         // Default constructor
@@ -30,7 +30,6 @@ namespace Assignment1
             this.seatName = string.Empty;
             this.customerName = string.Empty;
             this.occupiedSeat = false;
-
         }
 
         // Overloaded constructor
@@ -97,15 +96,12 @@ namespace Assignment1
 
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
-                // if the current array object has a true 
-                // Need to fix logic if using foreach to add buttons
                 if (venueArray[i].occupiedSeat == true)
                 {
                     occupiedSeats++;
                     buttonList.ElementAt(i).BackColor = Color.Red;
                 }
 
-                // if the current array object has a false
                 else
                 {                    
                     buttonList.ElementAt(i).BackColor = Color.FromArgb(0, 192, 0);
@@ -118,9 +114,6 @@ namespace Assignment1
                 occupancyStatus = $"Total Capacity: {occupiedSeats}/12 NO CAPACITY!  - " +
                     $"({Math.Round(occupationPercent, 1)}%) Capacity" +
                     $"\n{waitListCount} person(s) on waitlist";
-
-                // Figured out how to disable buttons!
-                //buttonList.ElementAt(12).Enabled = false;
             }
 
             else
@@ -142,7 +135,6 @@ namespace Assignment1
             // Sent to a string to use .Length
             string senderString = sender.ToString();
             seatSelection = senderString.Substring(senderString.Length - 2);
-            //MessageBox.Show(seatSelection);
         }
 
         /// <summary>

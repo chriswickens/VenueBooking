@@ -13,33 +13,30 @@ namespace Assignment1
 {
     public partial class frmMain : Form
     {
+        // Array of seats
+        VenueSeats[] venueArray = new VenueSeats[12];
 
-        // Initialize object arrays
-        VenueSeats[] venueArray = new VenueSeats[12]; // Seat Array...The array for the seats...
+        // Waitlist
+        List<string> waitList = new List<string>();
 
-        // Move To the class
-        List<string> waitList = new List<string>(); // Waitlist...list
+        // List for buttons (seat representation)
+        List<Button> buttonList = new List<Button>();
 
-        List<Button> buttonList = new List<Button>(); // CREATE LIST FOR BUTTONS
+        // Store user selection
+        internal string userSeatSelection = "";
 
-        //List<ToolTip> tList = new List<ToolTip>();
+        // Occupied seat check
+        internal bool anyOccupancyCheck = false;
+        internal int occupancyIndexLocation = 0;
 
-        // Store user data
-        string userSeatSelection = "";
+        // Top Status bar
+        internal string occupancyStatus = "";
 
-        // Occupied seat check stuff
-        bool anyOccupancyCheck = false;
-        int occupancyIndexLocation = 0;
-
-        // Top Status bar variable
-        string occupancyStatus = "";
-
-        // row/col selection variables
-        bool rowColCheck = false;
-        int userSeatSelectionIndex = 0;
-        string rowValue = "";
-        string colValue = "";
-        
+        // row/col selection
+        internal bool rowColCheck = false;
+        internal int userSeatSelectionIndex = 0;
+        internal string rowValue = "";
+        internal string colValue = "";
 
         public frmMain()
         {
@@ -48,7 +45,7 @@ namespace Assignment1
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // Add buttons to a list for various reasons
+            // Add buttons to a list
             // A buttons
             buttonList.Add(btnA1);
             buttonList.Add(btnA2);
@@ -67,21 +64,12 @@ namespace Assignment1
             buttonList.Add(btnC3);
             buttonList.Add(btnC4);
 
-            //foreach (Button item in gbxSeats.Controls)
-            //{
-            //    buttonList.Add(item);
-
-            //}
-
-            //MessageBox.Show($"{buttonList[0].Text}");
-            MessageBox.Show($"{venueArray.Count()}");
             // Assign values to the array items
             // A row
             venueArray[0] = new VenueSeats("A1", "", false);
             venueArray[1] = new VenueSeats("A2", "", false);
             venueArray[2] = new VenueSeats("A3", "", false);
             venueArray[3] = new VenueSeats("A4", "", false);
-            
 
             // B row
             venueArray[4] = new VenueSeats("B1", "", false);
@@ -126,14 +114,14 @@ namespace Assignment1
 
                 while (waitList.Count > 0)
                 {
-                    VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);                    
-                    
+                    VenueSeats.GetOccupancyLocation(venueArray, ref anyOccupancyCheck, ref occupancyIndexLocation);
+
                     // Add the first item from the list to the booking
                     if (anyOccupancyCheck == true)
                     {
                         tempStatusMessage = $"{waitList.ElementAt(0)} moved from waitlist to {venueArray[occupancyIndexLocation].seatName}";
                         VenueSeats.AddBooking(venueArray, occupancyIndexLocation, waitList.ElementAt(0));
-                        
+
                         if (storedWaitlistCount > 1)
                         {
                             waitListStatusMessage += $"{tempStatusMessage}, ";
@@ -143,9 +131,9 @@ namespace Assignment1
                         {
                             waitListStatusMessage = tempStatusMessage;
                         }
-                        
+
                         // Remove the person from the waitList
-                        waitList.RemoveAt(0);                        
+                        waitList.RemoveAt(0);
                     }
 
                     else if (anyOccupancyCheck == false && waitList.Count > 0)
@@ -153,7 +141,7 @@ namespace Assignment1
                         txtbxSystemMessages.Text = waitListStatusMessage;
                         break;
                     }
-                    
+
                 }
 
                 if (anyOccupancyCheck == true)
@@ -348,9 +336,6 @@ namespace Assignment1
                     }
                 }
 
-                // If the row-col check was good, and there is NO occupancy available
-                // Add to the waitlist
-                // Should I care about the row/col check since they are being waitlisted?
                 else if (anyOccupancyCheck == false)
                 {
                     // Add to wait list
@@ -370,16 +355,6 @@ namespace Assignment1
         /// 
         private void ButtonMouseHover(object sender, EventArgs e)
         {
-            // You can pass the ToolTip toolTip1 into a method/function apparently?
-            // Iterates through the length of the venue seats array
-            // Assigns the proper tooltip
-
-            // Not a big fan of how much work this technically does
-            // Is there a way to target the currently hovered button from code?
-            // Reference: I can only see 3 ways
-            // 1) this way
-            // 2) hand coding the button reactions like I did below
-            // 3) hand code each button hover individually in their own functions
             for (int i = 0; i < venueArray.GetLength(0); i++)
             {
                 // if the current array object has a true 
@@ -451,15 +426,12 @@ namespace Assignment1
                 txtbxSystemMessages.Text = "Seats are available";
             }
         }
-  
-        /*
-         * 
-         * 
-         * Clear the entire waitlist Get rid of this and the display when you're done
-         * 
-         * 
-         */
 
+        /// <summary>
+        /// Code for the button to clear the waitlist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClearWaitlist_Click(object sender, EventArgs e)
         {
             if (waitList.Count > 0)
