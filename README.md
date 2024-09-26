@@ -13,5 +13,5 @@ I would also like to add support for tracking the venue seating if the program i
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](VenueBooking.png)
 
