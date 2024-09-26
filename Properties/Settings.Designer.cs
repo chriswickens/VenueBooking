@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Assignment1.Properties
+namespace VenueBooking.Properties
 {
 
 

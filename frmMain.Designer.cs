@@ -1,4 +1,4 @@
-﻿namespace Assignment1
+﻿namespace VenueBooking
 {
     partial class frmMain
     {
@@ -437,7 +437,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
-            this.Text = "Assignment 1";
+            this.Text = "VenueBooking";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbxSeats.ResumeLayout(false);
             this.grpbxWaitlist.ResumeLayout(false);

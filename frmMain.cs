@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Assignment1
+namespace VenueBooking
 {
     public partial class frmMain : Form
     {
@@ -184,7 +184,6 @@ namespace Assignment1
         /// <param name="buttonText"></param>
         private void SeatDisplayButtonClicked(object sender, EventArgs e)
         {
-            // This will be where the message goes if the user clicks a seat button
             VenueSeats.SeatClickedStatus(ref userSeatSelection, ref sender);
 
             // Display a status message based on if the seat is or is not empty
@@ -287,8 +286,6 @@ namespace Assignment1
         /// <param name="e"></param>
         private void btnBook_Click(object sender, EventArgs e)
         {
-
-            // Can I do checks here or in the class?
             // Checks to see if the name entered is blank
             if (txtBxCustName.Text == "" || txtBxCustName.Text == " ")
             {
@@ -460,7 +457,6 @@ namespace Assignment1
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
             // Reset to prevent old data from causing errors
             userSeatSelection = "";
             userSeatSelectionIndex = 0;
